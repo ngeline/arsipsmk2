@@ -6,78 +6,39 @@
           <div class="row">
             <div class="col-12">
               <div class="card mb-4">
-                <div class="card-header"><strong>Forms layout</strong><span class="small ms-1">Gutters</span></div>
+                <div class="card-header"><strong>Tambah Surat Masuk</strong><span class="small ms-1"></span></div>
                 <div class="card-body">
-                  <p class="text-medium-emphasis small">By adding<a href="https://coreui.io/docs/layout/gutters/">gutter modifier classes</a>, you can have control over the gutter width in as well the inline as block direction.<strong>Also requires the <code>$enable-grid-classes</code> Sass variable to be enabled</strong> (on by default).</p>
                   <div class="example">
-                    <ul class="nav nav-tabs" role="tablist">
-                      <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-1036" role="tab">
-                          <svg class="icon me-2">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-media-play"></use>
-                          </svg>Preview</a></li>
-                      <li class="nav-item"><a class="nav-link" href="https://coreui.io/docs/forms/layout/#gutters" target="_blank">
-                          <svg class="icon me-2">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-code"></use>
-                          </svg>Code</a></li>
-                    </ul>
-                    <div class="tab-content rounded-bottom">
-                      <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1036">
-                        <div class="row g-3">
-                          <div class="col">
-                            <input class="form-control" type="text" placeholder="First name" aria-label="First name">
-                          </div>
-                          <div class="col">
-                            <input class="form-control" type="text" placeholder="Last name" aria-label="Last name">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-medium-emphasis small">More complex layouts can also be created with the grid system.</p>
-                  <div class="example">
-                    <ul class="nav nav-tabs" role="tablist">
-                      <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-267" role="tab">
-                          <svg class="icon me-2">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-media-play"></use>
-                          </svg>Preview</a></li>
-                      <li class="nav-item"><a class="nav-link" href="https://coreui.io/docs/forms/layout/#gutters" target="_blank">
-                          <svg class="icon me-2">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-code"></use>
-                          </svg>Code</a></li>
-                    </ul>
                     <div class="tab-content rounded-bottom">
                       <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-267">
                         <form class="row g-3">
-                          <div class="col-md-6">
-                            <label class="form-label" for="inputEmail4">Email</label>
-                            <input class="form-control" id="inputEmail4" type="email">
+                          <div class="col-12">
+                            <label class="form-label" for="inputAddress">Nomor Surat</label>
+                            <input class="form-control" id="inputAddress" type="text" placeholder="Masukkan Nomor Surat">
                           </div>
-                          <div class="col-md-6">
-                            <label class="form-label" for="inputPassword4">Password</label>
-                            <input class="form-control" id="inputPassword4" type="password">
+                          <div class="col-4">
+                            <label class="form-label" for="inputAddress">Tanggal Surat</label>
+                            <input class="form-control" id="inputAddress" type="date" placeholder="Masukkan Nomor Surat">
                           </div>
                           <div class="col-12">
-                            <label class="form-label" for="inputAddress">Address</label>
-                            <input class="form-control" id="inputAddress" type="text" placeholder="1234 Main St">
+                            <label class="form-label" for="inputAddress">Asal Surat</label>
+                            <input class="form-control" id="inputAddress" type="text" placeholder="Masukkan Nomor Surat">
                           </div>
                           <div class="col-12">
-                            <label class="form-label" for="inputAddress2">Address 2</label>
-                            <input class="form-control" id="inputAddress2" type="text" placeholder="Apartment, studio, or floor">
+                            <label class="form-label" for="inputAddress">Perihal Surat</label>
+                            <input class="form-control" id="inputAddress" type="text" placeholder="Masukkan Nomor Surat">
                           </div>
-                          <div class="col-md-6">
-                            <label class="form-label" for="inputCity">City</label>
-                            <input class="form-control" id="inputCity" type="text">
+                          <div class="col-4">
+                            <label class="form-label" for="inputAddress">Tanggal Terima</label>
+                            <input class="form-control" id="inputAddress" type="date" placeholder="Masukkan Nomor Surat">
                           </div>
-                          <div class="col-md-4">
-                            <label class="form-label" for="inputState">State</label>
-                            <select class="form-select" id="inputState">
-                              <option selected="">Choose...</option>
-                              <option>...</option>
-                            </select>
+                          <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile">
                           </div>
-                          <div class="col-md-2">
-                            <label class="form-label" for="inputZip">Zip</label>
-                            <input class="form-control" id="inputZip" type="text">
+                          <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Masukkan Keterangan Surat</label>
                           </div>
                           <div class="col-12">
                             <div class="form-check">
@@ -86,7 +47,7 @@
                             </div>
                           </div>
                           <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Sign in</button>
+                            <button class="btn btn-primary" type="submit">Simpan</button>
                           </div>
                         </form>
                       </div>
@@ -95,6 +56,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
