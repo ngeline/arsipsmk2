@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -16,13 +15,20 @@ return new class extends Migration
     {
         Schema::create('surat_masuks', function (Blueprint $table) {
             $table->id();
+            $table->string('dari');
+            $table->text('alamat');
+            $table->string('index');
             $table->string('nomor_surat');
             $table->date('tanggal_surat');
-            $table->string('asal_surat');
-            $table->string('perihal_surat');
-            $table->date('tanggal_terima');
+            $table->date('jumlah_lampiran');
             $table->string('file_surat');
-            $table->foreignIdFor(User::class);
+            $table->string('perihal');
+            $table->date('tanggal_input');
+            $table->string('kode_simpan');
+            $table->text('isi_ringkasan');
+            $table->date('tanggal_rapat')->nullable();
+            $table->time('waktu_rapat')->nullable();
+            $table->text('lokasi')->nullable();
             $table->timestamps();
         });
     }
