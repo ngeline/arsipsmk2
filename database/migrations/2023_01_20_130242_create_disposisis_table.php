@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('disposisis', function (Blueprint $table) {
             $table->id();
+            $table->string('id_surat');
+            $table->string('sifat_surat');
+            $table->string('catatan');
+            $table->foreignIdFor(User::class);
             $table->timestamps();
         });
     }
