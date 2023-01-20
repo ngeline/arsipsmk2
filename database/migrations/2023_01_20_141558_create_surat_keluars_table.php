@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('surat_masuks', function (Blueprint $table) {
+        Schema::create('surat_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('dari');
+            $table->string('kepada');
             $table->text('alamat');
-            $table->string('index');
             $table->string('nomor_surat');
             $table->date('tanggal_surat');
-            $table->date('jumlah_lampiran');
+            $table->string('jumlah_lampiran');
             $table->string('file_surat');
             $table->string('perihal');
             $table->date('tanggal_input');
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat_masuks');
+        Schema::dropIfExists('surat_keluars');
     }
 };

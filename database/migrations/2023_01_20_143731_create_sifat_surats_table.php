@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('disposisis', function (Blueprint $table) {
+        Schema::create('sifat_surats', function (Blueprint $table) {
             $table->id();
-            $table->string('id_surat');
-            $table->string('sifat_surat');
-            $table->string('catatan');
-            $table->foreignIdFor(User::class);
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('disposisis');
+        Schema::dropIfExists('sifat_surats');
     }
 };
