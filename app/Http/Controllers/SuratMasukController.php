@@ -43,7 +43,7 @@ class SuratMasukController extends Controller
             'alamat' => 'required',
             'nomor_surat' => 'required',
             'tanggal_surat' => 'required',
-            'dokumen' => 'required',
+            'dokumen' => 'required|mimes:pdf,doc',
             'perihal_surat' => 'required',
             'tanggal_input' => 'required',
             'kode_simpan' => 'required',
@@ -54,9 +54,10 @@ class SuratMasukController extends Controller
         $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
         Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
 
+        $input['dokumen'] = $nameFile;
         SuratMasuk::create($input);
 
-        return redirect()->back()->with('success', 'Berhasil membuat surat baru');
+        return redirect()->back()->with('success', 'Berhasil membuat surat masuk baru');
     }
 
     /**
@@ -97,14 +98,26 @@ class SuratMasukController extends Controller
             'alamat' => 'required',
             'nomor_surat' => 'required',
             'tanggal_surat' => 'required',
-            'dokumen' => 'required',
             'perihal_surat' => 'required',
             'tanggal_input' => 'required',
             'kode_simpan' => 'required',
             'keterangan' => 'required',
         ]);
 
+        if ($request->hasFile('dokumen')) {
+            $request->validate([
+                'dokumen' => 'mimes:pdf,doc'
+            ]);
+            $getDokumen = $request->file('dokumen');
+            $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
+            Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
 
+            $input['dokumen'] = $nameFile;
+        }
+
+        $suratMasuk->update($input);
+
+        return redirect()->back()->with('success', 'Berhasil memperbarui surat masuk');
     }
 
     /**

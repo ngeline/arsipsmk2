@@ -1,4 +1,4 @@
-@extends ('layouts.app')
+@extends ('layouts.app', ['title' => 'Edit Surat Masuk']);
 
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -11,9 +11,10 @@
                             <div class="example">
                                 <div class="tab-content rounded-bottom">
                                     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-267">
-                                        <form class="row g-3" action="{{ route('surat-masuk.update', $surat_masuk->id) }}" method="POST"
-                                            enctype="multipart/form-data">
+                                        <form class="row g-3" action="{{ route('surat-masuk.update', $surat_masuk->id) }}"
+                                            enctype="multipart/form-data" method="POST">
                                             @csrf
+                                            @method('PUT')
                                             <div class="col-12">
                                                 <label class="form-label" for="dari">Dari <span class="text-danger">*</span></label>
                                                 <input class="form-control @error('dari') is-invalid @enderror"
@@ -41,7 +42,7 @@
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="tanggal-surat">Tanggal Surat <span class="text-danger">*</span></label>
                                                 <input class="form-control @error('tanggal_surat') is-invalid @enderror"
                                                     id="tanggal-surat" name="tanggal_surat" type="date" value="{{ $surat_masuk->tanggal_surat }}">
@@ -49,13 +50,16 @@
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                            <div class="col-8">
-                                                <label for="file-surat" class="form-label">Upload Dokumen <span class="text-danger">*</span></label>
-                                                <input class="form-control @error('file_surat') is-invalid @enderror"
-                                                    type="file" id="file-surat" name="file_surat">
-                                                @error('file_surat')
+                                            <div class="col-md-4">
+                                                <label for="dokumen" class="form-label">Upload Dokumen </label>
+                                                <input class="form-control @error('dokumen') is-invalid @enderror"
+                                                    type="file" id="dokumen" name="dokumen" accept=".pdf,.doc">
+                                                @error('dokumen')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <iframe src="{{ url(Storage::url('public/dokumen/'.$surat_masuk->dokumen)) }}" frameborder="0" height="250px"></iframe>
                                             </div>
                                             <div class="col-12">
                                                 <label class="form-label" for="perihal-surat">Perihal Surat <span class="text-danger">*</span></label>
@@ -84,9 +88,9 @@
                                                 @enderror
                                             </div>
                                             <div class="form-floating">
-                                                <label for="keterangan">Masukkan Keterangan Surat <span class="text-danger">*</span></label>
                                                 <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Leave a comment here"
-                                                    id="keterangan" name="keterangan" style="height: 100px">{{ $surat_masuk->keterangan }}</textarea>
+                                                id="keterangan" name="keterangan" style="height: 100px">{{ $surat_masuk->keterangan }}</textarea>
+                                                <label for="keterangan">Masukkan Keterangan Surat <span class="text-danger">*</span></label>
                                                 @error('keterangan')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

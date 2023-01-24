@@ -1,4 +1,4 @@
-@extends ('layouts.app')
+@extends ('layouts.app', ['title' => "Tambah Surat Masuk"])
 
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -84,9 +84,9 @@
                                                 @enderror
                                             </div>
                                             <div class="form-floating">
-                                                <label for="keterangan">Masukkan Keterangan Surat <span class="text-danger">*</span></label>
                                                 <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Leave a comment here"
-                                                    id="keterangan" name="keterangan" style="height: 100px">{{ old('keterangan') }}</textarea>
+                                                id="keterangan" name="keterangan" style="height: 100px">{{ old('keterangan') }}</textarea>
+                                                <label for="keterangan">Masukkan Keterangan Surat <span class="text-danger">*</span></label>
                                                 @error('keterangan')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

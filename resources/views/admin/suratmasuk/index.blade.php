@@ -1,6 +1,6 @@
-@extends ('layouts.app')
+@extends('layouts.app', ['title' => "Surat Masuk"])
 
-@section ('content')
+@section('content')
 
 <div class="body flex-grow-1 px-3">
     <div class="container-lg">
