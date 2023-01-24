@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\DisposisiController;
+use App\Http\Controllers\SifatSuratController;
+use App\Http\Controllers\SuratKeluarController;
+use App\Http\Controllers\SuratMasukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.index');
+});
+
+Route::prefix('/admin')->group(function() {
+    Route::resource('/surat-masuk', SuratMasukController::class);
+    Route::resource('/surat-keluar', SuratKeluarController::class);
+    Route::resource('/disposisi', DisposisiController::class);
+    Route::resource('/sifat-surat', SifatSuratController::class);
 });
