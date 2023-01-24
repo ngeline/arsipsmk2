@@ -17,18 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('dari');
             $table->text('alamat');
-            $table->string('index');
             $table->string('nomor_surat');
             $table->date('tanggal_surat');
-            $table->date('jumlah_lampiran');
-            $table->string('file_surat');
-            $table->string('perihal');
+            $table->string('dokumen');
+            $table->string('perihal_surat');
             $table->date('tanggal_input');
             $table->string('kode_simpan');
-            $table->text('isi_ringkasan');
-            $table->date('tanggal_rapat')->nullable();
-            $table->time('waktu_rapat')->nullable();
-            $table->text('lokasi')->nullable();
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

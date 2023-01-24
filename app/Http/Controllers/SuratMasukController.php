@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SuratMasukController extends Controller
 {
@@ -14,7 +15,9 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.suratmasuk.index', [
+            'surat_masuks' => SuratMasuk::all()
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.suratmasuk.create');
     }
 
     /**
@@ -35,7 +38,26 @@ class SuratMasukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $getDokumen = $request->file('dokumen');
+        $namaFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
+        Storage::putFileAs('public/dokumen', $getDokumen, $namaFile);
+        // dd($getDokumen);
+
+        $input = $request->validate([
+            'dari' => 'required',
+            'alamat' => 'required',
+            'nomor_surat' => 'required',
+            'tanggal_surat' => 'required',
+            'dokumen' => 'required',
+            'perihal_surat' => 'required',
+            'tanggal_input' => 'required',
+            'kode_simpan' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        SuratMasuk::create($input);
+
+        return redirect()->back()->with('success', 'Berhasil membuat surat baru');
     }
 
     /**
@@ -57,7 +79,9 @@ class SuratMasukController extends Controller
      */
     public function edit(SuratMasuk $suratMasuk)
     {
-        //
+        return view('admin.suratmasuk.edit', [
+            'surat_masuk' => $suratMasuk
+        ]);
     }
 
     /**
@@ -69,7 +93,19 @@ class SuratMasukController extends Controller
      */
     public function update(Request $request, SuratMasuk $suratMasuk)
     {
-        //
+        $input = $request->validate([
+            'dari' => 'required',
+            'alamat' => 'required',
+            'nomor_surat' => 'required',
+            'tanggal_surat' => 'required',
+            'dokumen' => 'required',
+            'perihal_surat' => 'required',
+            'tanggal_input' => 'required',
+            'kode_simpan' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+
     }
 
     /**
@@ -80,6 +116,8 @@ class SuratMasukController extends Controller
      */
     public function destroy(SuratMasuk $suratMasuk)
     {
-        //
+        $suratMasuk->delete();
+
+        return redirect()->back()->with('success', 'Berhasil menghapus surat masuk');
     }
 }
