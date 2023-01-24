@@ -14,7 +14,9 @@ class DisposisiController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.disposisi.index', [
+            'disposisis' => Disposisi::all()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class DisposisiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.disposisi.create');
     }
 
     /**
@@ -35,7 +37,16 @@ class DisposisiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->validate([
+            'surat_masuk_id' => 'required',
+            'sifat_surat' => 'required',
+            'catatan' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        Disposisi::create($input);
+
+        return redirect();
     }
 
     /**
