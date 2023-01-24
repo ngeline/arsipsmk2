@@ -38,11 +38,6 @@ class SuratMasukController extends Controller
      */
     public function store(Request $request)
     {
-        $getDokumen = $request->file('dokumen');
-        $namaFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
-        Storage::putFileAs('public/dokumen', $getDokumen, $namaFile);
-        // dd($getDokumen);
-
         $input = $request->validate([
             'dari' => 'required',
             'alamat' => 'required',
@@ -54,6 +49,10 @@ class SuratMasukController extends Controller
             'kode_simpan' => 'required',
             'keterangan' => 'required',
         ]);
+
+        $getDokumen = $request->file('dokumen');
+        $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
+        Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
 
         SuratMasuk::create($input);
 
