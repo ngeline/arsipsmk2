@@ -13,6 +13,8 @@
 - composer update
 - cp .env.example .env
 - php artisan key:generate
+- setting name database in file .env
+- php artisan migrate
 - php artisan serve
 
 ## License
