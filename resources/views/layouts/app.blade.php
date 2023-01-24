@@ -8,7 +8,8 @@
 -->
 <!-- Breadcrumb-->
 <html lang="en">
-  <head>
+
+<head>
     <base href="./">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,10 +27,14 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('core-ui') }}/assets/favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('core-ui') }}/assets/favicon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('core-ui') }}/assets/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('core-ui') }}/assets/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('core-ui') }}/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('core-ui') }}/assets/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('core-ui') }}/assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="{{ asset('core-ui') }}/assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ asset('core-ui') }}/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="{{ asset('core-ui') }}/assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset('core-ui') }}/assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="{{ asset('core-ui') }}/assets/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('core-ui') }}/assets/favicon/ms-icon-144x144.png">
@@ -45,44 +50,37 @@
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      // Shared ID
-      gtag('config', 'UA-118965717-3');
-      // Bootstrap ID
-      gtag('config', 'UA-118965717-5');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        // Shared ID
+        gtag('config', 'UA-118965717-3');
+        // Bootstrap ID
+        gtag('config', 'UA-118965717-5');
     </script>
     <link href="{{ asset('core-ui') }}/vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
-  </head>
-  <body>
+</head>
 
+<body>
     <!-- Sidebar -->
     @include('layouts.sidebar')
 
 
 
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        <!-- header -->
+        @include('layouts.header')
 
-      <!-- header -->
-      @include('layouts.header')
+        <!-- content -->
+        @yield('content')
 
-
-
-      <!-- content -->
-      @yield('content')
-
-
-      <!-- footer -->
-      @include('layouts.footer')
-
-
+        <!-- footer -->
+        @include('layouts.footer')
 
     </div>
-
 
     <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('core-ui') }}/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
@@ -92,8 +90,8 @@
     <script src="{{ asset('core-ui') }}/vendors/@coreui/chartjs/js/coreui-chartjs.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/@coreui/utils/js/coreui-utils.js"></script>
     <script src="{{ asset('core-ui') }}/js/main.js"></script>
-    <script>
-    </script>
+    <script></script>
 
-  </body>
+</body>
+
 </html>
