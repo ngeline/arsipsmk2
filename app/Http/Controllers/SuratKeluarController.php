@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SuratKeluar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SuratKeluarController extends Controller
 {
@@ -14,7 +15,9 @@ class SuratKeluarController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.suratkeluar.index', [
+            'surat_keluars' => SuratKeluar::all()
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.suratkeluar.create');
     }
 
     /**
@@ -35,7 +38,26 @@ class SuratKeluarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->validate([
+            'dari' => 'required',
+            'alamat' => 'required',
+            'nomor_surat' => 'required',
+            'tanggal_surat' => 'required',
+            'dokumen' => 'required|mimes:pdf,doc',
+            'perihal_surat' => 'required',
+            'tanggal_input' => 'required',
+            'kode_simpan' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $getDokumen = $request->file('dokumen');
+        $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
+        Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
+
+        $input['dokumen'] = $nameFile;
+        SuratKeluar::create($input);
+
+        return redirect()->back()->with('success', 'Berhasil membuat surat keluar baru');
     }
 
     /**
@@ -57,7 +79,7 @@ class SuratKeluarController extends Controller
      */
     public function edit(SuratKeluar $suratKeluar)
     {
-        //
+        return view('admin.suratkeluar.edit');
     }
 
     /**
@@ -69,7 +91,31 @@ class SuratKeluarController extends Controller
      */
     public function update(Request $request, SuratKeluar $suratKeluar)
     {
-        //
+        $input = $request->validate([
+            'dari' => 'required',
+            'alamat' => 'required',
+            'nomor_surat' => 'required',
+            'tanggal_surat' => 'required',
+            'perihal_surat' => 'required',
+            'tanggal_input' => 'required',
+            'kode_simpan' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        if ($request->hasFile('dokumen')) {
+            $request->validate([
+                'dokumen' => 'mimes:pdf,doc'
+            ]);
+            $getDokumen = $request->file('dokumen');
+            $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
+            Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
+
+            $input['dokumen'] = $nameFile;
+        }
+
+        $suratKeluar->update($input);
+
+        return redirect()->back()->with('success', 'Berhasil memperbarui surat keluar');
     }
 
     /**
@@ -80,6 +126,8 @@ class SuratKeluarController extends Controller
      */
     public function destroy(SuratKeluar $suratKeluar)
     {
-        //
+        $suratKeluar->delete();
+
+        return redirect()->back()->with('success', 'Berhasil menghapus surat keluar');
     }
 }
