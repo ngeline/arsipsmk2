@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DisposisiController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SifatSuratController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
@@ -21,9 +22,16 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
-Route::prefix('/admin')->group(function() {
-    Route::resource('/surat-masuk', SuratMasukController::class);
-    Route::resource('/surat-keluar', SuratKeluarController::class);
-    Route::resource('/disposisi', DisposisiController::class);
-    Route::resource('/sifat-surat', SifatSuratController::class);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('/admin')->group(function () {
+        Route::resource('/surat-masuk', SuratMasukController::class);
+        Route::resource('/surat-keluar', SuratKeluarController::class);
+        Route::resource('/disposisi', DisposisiController::class);
+        Route::resource('/sifat-surat', SifatSuratController::class);
+    });
 });
