@@ -22,16 +22,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.index');
+    return redirect()->route('login');
 });
 
-// Route::middleware('guest')->group(function () {
-//     Route::get('/login', [LoginController::class, 'index'])->name('login');
-//     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
-// });
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+    Route::get('/register', [LoginController::class, 'register'])->name('register');
+});
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::get('/register', [LoginController::class, 'register'])->name('register');
+// Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 // Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->group(function () {
