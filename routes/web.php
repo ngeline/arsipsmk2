@@ -29,9 +29,22 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->group(function () {
+        
+        // Surat Masuk Admin
         Route::resource('/surat-masuk', SuratMasukController::class);
+        // Route::get('surat-masuk/edit/{id}', SuratMasukController::class, 'edit');
+        // Route::get('surat-masuk/detail/{id}', SuratMasukController::class, 'store');
+
+
+        // Surat Keluar Admin
         Route::resource('/surat-keluar', SuratKeluarController::class);
+
+
+        // Disposisi Admim
         Route::resource('/disposisi', DisposisiController::class);
+
+
+        // Sifat Surat
         Route::resource('/sifat-surat', SifatSuratController::class);
     });
 });

@@ -6,138 +6,54 @@
     <div class="container-lg">
         <div class="car"></div>
         <div class="card mb-4">
-            <div class="card-header"><strong>Tables</strong><span class="small ms-1">Hoverable rows</span></div>
+            <div class="card-header"><strong>Surat Masuk</strong><span class="small ms-1"></span></div>
             <div class="card-body">
-                <p class="text-medium-emphasis small">Add <code>.table-hover</code> to enable a hover state on table
-                    rows within a <code> &lt;tbody&gt;</code>.</p>
                 <div class="example">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-359"
-                                role="tab">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-media-play"></use>
-                                </svg>Preview</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                href="https://coreui.io/docs/content/tables/#hoverable-rows" target="_blank">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-code"></use>
-                                </svg>Code</a></li>
-                    </ul>
-                    <div class="tab-content rounded-bottom">
-                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-359">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($surat_masuks as $surat_masuk)
-                                        <tr>
-                                            <td>{{ $surat_masuk->nomor_surat }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="example">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-1240"
-                                role="tab">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-media-play"></use>
-                                </svg>Preview</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                href="https://coreui.io/docs/content/tables/#hoverable-rows" target="_blank">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-code"></use>
-                                </svg>Code</a></li>
-                    </ul>
-                    <div class="tab-content rounded-bottom">
-                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1240">
-                            <table class="table table-dark table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-medium-emphasis small">These hoverable rows can also be combined with the striped
-                    variant:</p>
-                <div class="example">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-416"
-                                role="tab">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-media-play"></use>
-                                </svg>Preview</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                href="https://coreui.io/docs/content/tables/#hoverable-rows" target="_blank">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-code"></use>
-                                </svg>Code</a></li>
-                    </ul>
                     <div class="tab-content rounded-bottom">
                         <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
+                        <a href="" class="btn btn-primary btn-l" role="button">Tambah Data</a>
+
+
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Dari</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col">Nomor Surat</th>
+                                        <th scope="col">Tanggal Surat</th>
+                                        <th scope="col">Dokumen</th>
+                                        <th scope="col">Perihal Surat</th>
+                                        <th scope="col">Tanggal Input</th>
+                                        <th scope="col">Kode Simpan</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Aksi</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($surat_masuks as $surat_masuk)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $surat_masuk->dari }}</td>
+                                        <td>{{ $surat_masuk->alamat }}</td>
+                                        <td>{{ $surat_masuk->nomor_surat }}</td>
+                                        <td>{{ $surat_masuk->tanggal_surat }}</td>
+                                        <td>{{ $surat_masuk->dokumen }}</td>
+                                        <td>{{ $surat_masuk->perihal_surat }}</td>
+                                        <td>{{ $surat_masuk->tanggal_input }}</td>
+                                        <td>{{ $surat_masuk->kode_simpan }}</td>
+                                        <td>{{ $surat_masuk->keterangan }}</td>
+                                        <td><a href=""class="btn icon icon-left btn-warning" role="button"><i data-feather="trash"></i></a></td>
+                                        <td><a href=""class="btn icon icon-left btn-danger" role="button"><i data-feather="trash"></i></a></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>
