@@ -35,13 +35,13 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
 
 // Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->group(function () {
-        
+
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         // Surat Masuk Admin
-        Route::resource('/surat-masuk', SuratMasukController::class , ['except' => ['update', 'destroy']]);
+        Route::resource('/surat-masuk', SuratMasukController::class)->except(['update', 'destroy']);
         Route::post('/surat-masuk/{master_surat_masuk}', [SuratMasukController::class, 'update'])->name('surat-masuk.update');
-        Route::get('/surat-masuk/{master_surat_masuk}', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
+        Route::get('/surat-masuk/{master_surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
 
 
         // Surat Keluar Admin
@@ -54,7 +54,7 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
 
         // Sifat Surat
         Route::resource('/sifat-surat', SifatSuratController::class);
-        
+
 
         // Sifat Surat
         Route::resource('/users', UserController::class);

@@ -47,13 +47,15 @@
                                         <td>{{ $surat_masuk->tanggal_input }}</td>
                                         <td>{{ $surat_masuk->kode_simpan }}</td>
                                         <td>{{ $surat_masuk->keterangan }}</td>
-                                        <td><a href=""class="btn icon icon-left btn-warning" role="button"><i data-feather="trash"></i></a></td>
-                                        <td><a href=""class="btn icon icon-left btn-danger" role="button"><i data-feather="trash"></i></a></td>
+                                        <td>
+                                            <a href="{{ route('surat-masuk.edit', $surat_masuk->id) }}" class="btn btn-warning" role="button">Edit</a>
+                                            <a href="{{ route('surat-masuk.destroy', $surat_masuk->id) }}" class="btn btn-danger" role="button">Delete</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            
+
                         </div>
                     </div>
                 </div>
