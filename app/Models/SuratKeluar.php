@@ -16,10 +16,14 @@ class SuratKeluar extends Model
         'alamat',
         'nomor_surat',
         'tanggal_surat',
-        'dokumen',
+        'jumlah_lampiran',
+        'file_surat',
         'perihal_surat',
         'tanggal_input',
         'kode_simpan',
-        'keterangan',
+        'isi_ringkasan',
+        'tanggal_rapat',
+        'waktu_rapat',
+        'lokasi',
     ];
 }
