@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SifatSuratController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
@@ -22,18 +25,23 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
-Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
-});
+// Route::middleware('guest')->group(function () {
+//     Route::get('/login', [LoginController::class, 'index'])->name('login');
+//     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+// });
 
-Route::middleware('auth')->group(function () {
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+
+// Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->group(function () {
         
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
         // Surat Masuk Admin
-        Route::resource('/surat-masuk', SuratMasukController::class);
-        // Route::get('surat-masuk/edit/{id}', SuratMasukController::class, 'edit');
-        // Route::get('surat-masuk/detail/{id}', SuratMasukController::class, 'store');
+        Route::resource('/surat-masuk', SuratMasukController::class , ['except' => ['update', 'destroy']]);
+        Route::post('/surat-masuk/{master_surat_masuk}', [SuratMasukController::class, 'update'])->name('surat-masuk.update');
+        Route::get('/surat-masuk/{master_surat_masuk}', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
 
 
         // Surat Keluar Admin
@@ -46,5 +54,9 @@ Route::middleware('auth')->group(function () {
 
         // Sifat Surat
         Route::resource('/sifat-surat', SifatSuratController::class);
+        
+
+        // Sifat Surat
+        Route::resource('/users', UserController::class);
     });
-});
+// });

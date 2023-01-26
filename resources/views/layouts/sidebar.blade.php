@@ -8,11 +8,12 @@
         </svg>
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-        <li class="nav-item"><a class="nav-link" href="index.html">
+        <li class="nav-item"><a class="nav-link" href="{{ url('admin/dashboard')}}">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-speedometer">
                     </use>
-                </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
+                <!-- </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li> -->
+                </svg> Dashboard</a></li>
         <li class="nav-item"><a class="nav-link" href="charts.html">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user">
@@ -40,11 +41,11 @@
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-notes"></use>
             </svg> Disposisi</a></li>
-        <li class="nav-item"><a class="nav-link" href="charts.html">
+        <!-- <li class="nav-item"><a class="nav-link" href="charts.html">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-paperclip"></use>
-            </svg> Laporan Surat</a></li>
-        <li class="nav-item"><a class="nav-link" href="charts.html">
+            </svg> Laporan Surat</a></li> -->
+        <li class="nav-item"><a class="nav-link" href="{{ url('admin/users')}}">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user-follow"></use>
             </svg> Users</a></li>
@@ -79,7 +80,7 @@
                         </svg> Error 500</a></li>
             </ul>
         </li>
-        <li class="nav-item mt-auto"><a class="nav-link" href="https://coreui.io/docs/templates/installation/"
+        <!-- <li class="nav-item mt-auto"><a class="nav-link" href="https://coreui.io/docs/templates/installation/"
                 target="_blank">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-description">
@@ -90,7 +91,7 @@
                     <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-layers"></use>
                 </svg> Try CoreUI
                 <div class="fw-semibold">PRO</div>
-            </a></li>
+            </a></li> -->
     </ul>
     <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
 </div>
