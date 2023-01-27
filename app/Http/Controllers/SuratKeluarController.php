@@ -39,15 +39,18 @@ class SuratKeluarController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'dari' => 'required',
+            'kepada' => 'required',
             'alamat' => 'required',
             'nomor_surat' => 'required',
             'tanggal_surat' => 'required',
+            'jumlah_lampiran' => 'required',
             'dokumen' => 'required|mimes:pdf,doc',
             'perihal_surat' => 'required',
             'tanggal_input' => 'required',
             'kode_simpan' => 'required',
-            'keterangan' => 'required',
+            'isi_ringkasan' => 'required',
+            'tanggal_rapat' => 'required',
+            'lokasi' => 'required',
         ]);
 
         $getDokumen = $request->file('dokumen');

@@ -40,12 +40,14 @@ Route::middleware('guest')->group(function () {
 
         // Surat Masuk Admin
         Route::resource('/surat-masuk', SuratMasukController::class)->except(['update', 'destroy']);
-        Route::post('/surat-masuk/{master_surat_masuk}', [SuratMasukController::class, 'update'])->name('surat-masuk.update');
-        Route::get('/surat-masuk/{master_surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
+        Route::put('/surat-masuk/{surat_masuk}', [SuratMasukController::class, 'update'])->name('surat-masuk.update');
+        Route::get('/surat-masuk/{surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
 
 
         // Surat Keluar Admin
-        Route::resource('/surat-keluar', SuratKeluarController::class);
+        Route::resource('/surat-keluar', SuratKeluarController::class)->except(['update', 'destroy']);
+        Route::put('/surat-keluar/{surat_keluar}', [SuratMasukController::class, 'update'])->name('surat-keluar.update');
+        Route::get('/surat-keluar/{surat_keluar}/delete', [SuratMasukController::class, 'destroy'])->name('surat-keluar.destroy');
 
 
         // Disposisi Admim
