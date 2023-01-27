@@ -1,11 +1,12 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-        <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+        <!-- <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
             <use href="{{ asset('core-ui') }}/assets/brand/logosmk2.png"></use>
         </svg>
         <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
             <use href="{{ asset('core-ui') }}/assets/brand/logosmk2.png"></use>
-        </svg>
+        </svg> -->
+        ARSIP SURAT
     </div>
     <!-- <div class="sidebar-brand d-none d-md-flex">
         <img class="avatar-img" width="1" height="1" src="{{ asset('core-ui') }}/assets/brand/logosmk2.png" alt="user@email.com"></img>
@@ -17,7 +18,7 @@
                     </use>
                 <!-- </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li> -->
                 </svg> Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="charts.html">
+        <li class="nav-item"><a class="nav-link" href="{{ url('admin/profile')}}">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user">
                     </use>

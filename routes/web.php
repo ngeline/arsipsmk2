@@ -4,6 +4,7 @@ use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SifatSuratController;
 use App\Http\Controllers\SuratKeluarController;
@@ -37,6 +38,12 @@ Route::middleware('guest')->group(function () {
     Route::prefix('/admin')->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+        // Profil Admim
+        Route::resource('/profile', ProfileController::class);
+
+
 
         // Surat Masuk Admin
         Route::resource('/surat-masuk', SuratMasukController::class)->except(['update', 'destroy']);
