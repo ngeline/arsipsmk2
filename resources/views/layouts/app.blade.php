@@ -47,6 +47,7 @@
     <!-- We use those styles to show code examples, you should remove them in your application.-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
     <link href="{{ asset('core-ui') }}/css/examples.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('core-ui') }}/plugins/datatable/datatables.min.css">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
@@ -82,6 +83,9 @@
 
     </div>
 
+    {{-- Jquery --}}
+    <script src="{{ asset('core-ui') }}/plugins/jquery/jquery-3.1.0.js"></script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('core-ui') }}/plugins/datatable/datatables.min.js"></script>
     <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('core-ui') }}/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/simplebar/js/simplebar.min.js"></script>
@@ -90,7 +94,7 @@
     <script src="{{ asset('core-ui') }}/vendors/@coreui/chartjs/js/coreui-chartjs.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/@coreui/utils/js/coreui-utils.js"></script>
     <script src="{{ asset('core-ui') }}/js/main.js"></script>
-    <script></script>
+    @stack('js')
 
 </body>
 
