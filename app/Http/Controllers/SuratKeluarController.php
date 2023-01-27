@@ -43,14 +43,11 @@ class SuratKeluarController extends Controller
             'alamat' => 'required',
             'nomor_surat' => 'required',
             'tanggal_surat' => 'required',
-            'jumlah_lampiran' => 'required',
             'dokumen' => 'required|mimes:pdf,doc',
             'perihal_surat' => 'required',
             'tanggal_input' => 'required',
             'kode_simpan' => 'required',
-            'isi_ringkasan' => 'required',
-            'tanggal_rapat' => 'required',
-            'lokasi' => 'required',
+            'keterangan' => 'required',
         ]);
 
         $getDokumen = $request->file('dokumen');
@@ -95,10 +92,11 @@ class SuratKeluarController extends Controller
     public function update(Request $request, SuratKeluar $suratKeluar)
     {
         $input = $request->validate([
-            'dari' => 'required',
+            'kepada' => 'required',
             'alamat' => 'required',
             'nomor_surat' => 'required',
             'tanggal_surat' => 'required',
+            'dokumen' => 'required|mimes:pdf,doc',
             'perihal_surat' => 'required',
             'tanggal_input' => 'required',
             'kode_simpan' => 'required',

@@ -22,7 +22,6 @@
                   </div>
                 </div>
                 <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-                  <canvas class="chart" id="card-chart1" height="70"></canvas>
                 </div>
               </div>
             </div>
@@ -44,7 +43,6 @@
                   </div>
                 </div>
                 <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-                  <canvas class="chart" id="card-chart2" height="70"></canvas>
                 </div>
               </div>
             </div>
@@ -66,7 +64,6 @@
                   </div>
                 </div>
                 <div class="c-chart-wrapper mt-3" style="height:70px;">
-                  <canvas class="chart" id="card-chart3" height="70"></canvas>
                 </div>
               </div>
             </div>

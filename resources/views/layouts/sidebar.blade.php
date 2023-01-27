@@ -1,12 +1,15 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
         <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('core-ui') }}/assets/brand/coreui.svg#full"></use>
+            <use href="{{ asset('core-ui') }}/assets/brand/logosmk2.png"></use>
         </svg>
         <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('core-ui') }}/assets/brand/coreui.svg#signet"></use>
+            <use href="{{ asset('core-ui') }}/assets/brand/logosmk2.png"></use>
         </svg>
     </div>
+    <!-- <div class="sidebar-brand d-none d-md-flex">
+        <img class="avatar-img" width="1" height="1" src="{{ asset('core-ui') }}/assets/brand/logosmk2.png" alt="user@email.com"></img>
+    </div> -->
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item"><a class="nav-link" href="{{ url('admin/dashboard')}}">
                 <svg class="nav-icon">
@@ -50,7 +53,7 @@
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user-follow"></use>
             </svg> Users</a></li>
 
-        <li class="nav-title">Extras</li>
+        <!-- <li class="nav-title">Extras</li>
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-star"></use>
@@ -79,7 +82,7 @@
                             </use>
                         </svg> Error 500</a></li>
             </ul>
-        </li>
+        </li> -->
         <!-- <li class="nav-item mt-auto"><a class="nav-link" href="https://coreui.io/docs/templates/installation/"
                 target="_blank">
                 <svg class="nav-icon">

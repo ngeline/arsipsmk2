@@ -46,8 +46,8 @@ Route::middleware('guest')->group(function () {
 
         // Surat Keluar Admin
         Route::resource('/surat-keluar', SuratKeluarController::class)->except(['update', 'destroy']);
-        Route::put('/surat-keluar/{surat_keluar}', [SuratMasukController::class, 'update'])->name('surat-keluar.update');
-        Route::get('/surat-keluar/{surat_keluar}/delete', [SuratMasukController::class, 'destroy'])->name('surat-keluar.destroy');
+        Route::put('/surat-keluar/{surat_keluar}', [SuratKeluarController::class, 'update'])->name('surat-keluar.update');
+        Route::get('/surat-keluar/{surat_keluar}/delete', [SuratKeluarController::class, 'destroy'])->name('surat-keluar.destroy');
 
 
         // Disposisi Admim

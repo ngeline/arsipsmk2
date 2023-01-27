@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
-                        <div class="card-header"><strong>Tambah Surat Masuk</strong><span class="small ms-1"></span></div>
+                        <div class="card-header"><strong>Edit Surat Masuk</strong><span class="small ms-1"></span></div>
                         <div class="card-body">
                             <div class="example">
                                 <div class="tab-content rounded-bottom">

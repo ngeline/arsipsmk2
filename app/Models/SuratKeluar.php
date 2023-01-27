@@ -16,14 +16,17 @@ class SuratKeluar extends Model
         'alamat',
         'nomor_surat',
         'tanggal_surat',
-        'jumlah_lampiran',
-        'file_surat',
+        'dokumen',
         'perihal_surat',
         'tanggal_input',
         'kode_simpan',
-        'isi_ringkasan',
-        'tanggal_rapat',
-        'waktu_rapat',
-        'lokasi',
+        'keterangan',
     ];
+
+    protected $guard = [];
+
+    public function disposisi()
+    {
+        return $this->belongsTo(Disposisi::class);
+    }
 }
