@@ -67,9 +67,9 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            $('#tabel-data').DataTable([
-
-            ]);
+            $('#tabel-data').DataTable({
+                responsive: true
+            });
         });
     </script>
 @endpush
