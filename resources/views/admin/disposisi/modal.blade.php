@@ -1,73 +1,11 @@
-@extends('layouts.app', ['title' => 'Disposisi'])
-
-@section('content')
-
-
-<div class="body flex-grow-1 px-3">
-    <div class="container-lg">
-        <div class="car"></div>
-        <div class="card mb-4">
-            <div class="card-header"><strong>Disposisi</strong><span class="small ms-1"></span></div>
-            <div class="card-body">
-                <div class="example">
-                    <div class="tab-content rounded-bottom">
-                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                            <!-- <a href="{{ route('disposisi.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data</a> -->
-                            <!-- Button trigger modal -->
-                            <button type="button" id="buttonexampleModal" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Tambah Data
-                            </button>
-                            <table id="tabel-data" class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nomor Surat</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Catatan</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                    $no = 1;
-                                    @endphp
-                                    @foreach ($disposisis as $disposisi)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $disposisi->suratMasuk->nomor_surat }}</td>
-                                        <td>{{ $disposisi->user->name }}</td>
-                                        <td>{{ $disposisi->catatan }}</td>
-                                        <td>
-                                            <a href="{{ route('disposisi.edit', $disposisi->id) }}"
-                                                class="btn btn-warning" role="button">Edit</a>
-                                            <a data-toggle="modal fade" data-target="#edit{{ $disposisi->id }}"
-                                                class="btn btn-warning" role="button">Edit</a>
-                                                @include('admin.disposisi.modal')
-                                            <a href="{{ route('disposisi.destroy', $disposisi->id) }}"
-                                                class="btn btn-danger" role="button">Delete</a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Create -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="edit{{ $disposisi->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Disposisi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Disposisi</h5>
             </div>
-            <form method="POST" action="{{ route('disposisi.store') }}">
+            <form method="POST" action="{{ route('disposisi.update', $disposisi->id ) }}">
                 
                 @csrf
                 <div class="modal-body">
@@ -79,7 +17,11 @@
                             <select class="form-control" name="surat_masuk_id" id="surat_masuk_id">
                                 <option value=""> Pilih Nomor Surat </option>
                             @foreach ($surat_masuks as $surat_masuk)
+                                @if ( $disposisi->suratMasuk->nomor_surat == $surat_masuk->id)
+                                <option value="{{ $disposisi->suratMasuk->nomor_surat }}">{{ $surat_masuk->nomor_surat }}</option>
+                                @else
                                 <option value="{{ $surat_masuk->id }}">{{ $surat_masuk->nomor_surat }}</option>
+                                @endif
                             @endforeach
                             </select>
 
@@ -158,31 +100,3 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- Modal Edit -->
-
-
-@endsection
-@push('js')
-<script>
-    $(document).ready(function () {
-        $('#tabel-data').DataTable({
-            responsive: true
-        });
-        $('#buttonexampleModal').click(
-            function () {
-                $('#exampleModal').modal('toggle')
-            }
-        )
-        $('#buttoncloseexampleModal').click(
-            function () {
-                $('#exampleModal').modal('hide')
-            }
-        )
-
-    });
-
-</script>
-@endpush

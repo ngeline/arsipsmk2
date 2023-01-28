@@ -79,7 +79,9 @@ class SuratKeluarController extends Controller
      */
     public function edit(SuratKeluar $suratKeluar)
     {
-        return view('admin.suratkeluar.edit');
+        return view('admin.suratkeluar.edit', [
+            'surat_keluar' => $suratKeluar
+        ]);
     }
 
     /**
@@ -96,7 +98,6 @@ class SuratKeluarController extends Controller
             'alamat' => 'required',
             'nomor_surat' => 'required',
             'tanggal_surat' => 'required',
-            'dokumen' => 'required|mimes:pdf,doc',
             'perihal_surat' => 'required',
             'tanggal_input' => 'required',
             'kode_simpan' => 'required',

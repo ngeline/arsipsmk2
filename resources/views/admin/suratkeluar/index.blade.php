@@ -47,9 +47,9 @@
                                                 <td>{{ $surat_keluar->kode_simpan }}</td>
                                                 <td>{{ $surat_keluar->keterangan }}</td>
                                                 <td>
-                                                    <a href="{{ route('surat-masuk.edit', $surat_keluar->id) }}"
+                                                    <a href="{{ route('surat-keluar.edit', $surat_keluar->id) }}"
                                                         class="btn btn-warning" role="button">Edit</a>
-                                                    <a href="{{ route('surat-masuk.destroy', $surat_keluar->id) }}"
+                                                    <a href="{{ route('surat-keluar.destroy', $surat_keluar->id) }}"
                                                         class="btn btn-danger" role="button">Delete</a>
                                                 </td>
                                             </tr>

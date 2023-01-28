@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Disposisi;
 use App\Models\SuratMasuk;
+use App\Models\SifatSurat;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,10 @@ class DisposisiController extends Controller
     public function index()
     {
         return view('admin.disposisi.index', [
-            'disposisis' => Disposisi::with('user', 'suratMasuk')->get()
+            'disposisis' => Disposisi::with('user', 'suratMasuk')->get(),
+            'surat_masuks' => SuratMasuk::all(),
+            'sifat_surats' => SifatSurat::all(),
+            'users' => User::all()
         ]);
     }
 
@@ -42,12 +46,14 @@ class DisposisiController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $input = $request->validate([
             'surat_masuk_id' => 'required',
-            'sifat_surat' => 'required',
+            'sifat_surat_id' => 'required',
             'catatan' => 'required',
             'user_id' => 'required'
         ]);
+        // 
 
         Disposisi::create($input);
 

@@ -6,11 +6,12 @@
         <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
             <use href="{{ asset('core-ui') }}/assets/brand/logosmk2.png"></use>
         </svg> -->
-        ARSIP SURAT
+        <!-- ARSIP SURAT -->
+        <div class="sidebar-brand d-none d-md-flex">
+            <img class="" width="150" height="46" src="{{ asset('core-ui') }}/assets/brand/logosmk2.png" alt="user@email.com"></img>
+        </div>
     </div>
-    <!-- <div class="sidebar-brand d-none d-md-flex">
-        <img class="avatar-img" width="1" height="1" src="{{ asset('core-ui') }}/assets/brand/logosmk2.png" alt="user@email.com"></img>
-    </div> -->
+
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item"><a class="nav-link" href="{{ url('admin/dashboard')}}">
                 <svg class="nav-icon">
@@ -33,23 +34,23 @@
                     <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
                 </svg> Typography</a></li> -->
         <li class="nav-title">Components</li>
-        <li class="nav-item"><a class="nav-link" href="{{ url('admin/surat-masuk')}}">
+        <li class="nav-item"><a class="nav-link" href="{{ route ('surat-masuk.index')}}">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-note-add"></use>
             </svg> Surat Masuk</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url('admin/surat-keluar')}}">
+        <li class="nav-item"><a class="nav-link" href="{{ route ('surat-keluar.index')}}">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-description"></use>
             </svg> Surat Keluar</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url('admin/disposisi')}}">
+        <li class="nav-item"><a class="nav-link" href="{{ route ('disposisi.index')}}">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-notes"></use>
             </svg> Disposisi</a></li>
-        <!-- <li class="nav-item"><a class="nav-link" href="charts.html">
+        <li class="nav-item"><a class="nav-link" href="{{ route ('sifat-surat.index')}}">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-paperclip"></use>
-            </svg> Laporan Surat</a></li> -->
-        <li class="nav-item"><a class="nav-link" href="{{ url('admin/users')}}">
+            </svg> Sifat Surat</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route ('users.index')}}">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user-follow"></use>
             </svg> Users</a></li>
