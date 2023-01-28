@@ -15,7 +15,7 @@
 - cp .env.example .env
 - php artisan key:generate
 - setting database name in file .env
-- php artisan migrate
+- php artisan migrate --seed
 - php artisan serve
 
 ## License
