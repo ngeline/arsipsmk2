@@ -27,6 +27,6 @@ class SuratMasuk extends Model
 
     public function disposisi()
     {
-        return $this->belongsTo(Disposisi::class);
+        return $this->hasOne(Disposisi::class, 'surat_masuk_id', 'id');
     }
 }

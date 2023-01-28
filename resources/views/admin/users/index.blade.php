@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => "User"])
 
 @section('content')
-    
+
 
 
     <div class="body flex-grow-1 px-3">
@@ -21,6 +21,7 @@
                                     <tr>
                                         <th scope="col">No</th>
                                         <th scope="col">Nama</th>
+                                        <th scope="col">Role</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -32,8 +33,11 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $user->name }}</td>
-                                        <td><a href=""class="btn icon icon-left btn-warning" role="button"><i data-feather="trash"></i></a></td>
-                                        <td><a href=""class="btn icon icon-left btn-danger" role="button"><i data-feather="trash"></i></a></td>
+                                        <td>{{ $user->role->nama }}</td>
+                                        <td>
+                                            <a href=""class="btn btn-warning text-white" role="button">Edit</a>
+                                            <a href=""class="btn btn-danger text-white" role="button">Delete</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

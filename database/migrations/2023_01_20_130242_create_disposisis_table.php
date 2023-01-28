@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SifatSurat;
 use App\Models\SuratMasuk;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -18,7 +19,7 @@ return new class extends Migration
         Schema::create('disposisis', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(SuratMasuk::class);
-            $table->string('sifat_surat');
+            $table->foreignIdFor(SifatSurat::class);
             $table->string('catatan');
             $table->foreignIdFor(User::class);
             $table->timestamps();
