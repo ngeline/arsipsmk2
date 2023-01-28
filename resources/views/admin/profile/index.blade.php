@@ -1,4 +1,4 @@
-@extends ('layouts.app', ['title' => 'Profile']);
+@extends ('layouts.app', ['title' => 'Profile'])
 
 @section('content')
 
@@ -12,14 +12,14 @@
                             <div class="example">
                                 <div class="tab-content rounded-bottom">
                                     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-267">
-                                        <form method="POST" action="">
+                                        <form method="POST" action="{{ route('profil.update', $user->id) }}">
                                             @csrf
 
-                                            <div class="form-group row">
+                                            <div class="form-group row mb-3">
                                                 <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                                 <div class="col-md-6">
-                                                    <input style="background-color: #ecebeb; color: black;" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="" required autocomplete="name" autofocus>
+                                                    <input style="background-color: #ecebeb; color: black;" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
 
                                                     @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -29,11 +29,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
+                                            <div class="form-group row mb-5">
                                                 <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                                 <div class="col-md-6">
-                                                    <input style="background-color: #ecebeb; color: black;" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" required autocomplete="email">
+                                                    <input style="background-color: #ecebeb; color: black;" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
 
                                                     @error('email')
                                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
+                                            <div class="form-group row mb-3">
+                                                <p><b class="text-danger fs-5">! </b>Jika tidak ingin mengganti password, input password dan confirm password dikosongkan.</p>
                                                 <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                                 <div class="col-md-6">
@@ -57,7 +58,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
+                                            <div class="form-group row mb-3">
                                                 <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                                 <div class="col-md-6">
