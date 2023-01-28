@@ -17,7 +17,7 @@ class DisposisiController extends Controller
     public function index()
     {
         return view('admin.disposisi.index', [
-            'disposisis' => Disposisi::with(['surat_masuk', 'user'])->get()
+            'disposisis' => Disposisi::with('user', 'suratMasuk')->get()
         ]);
     }
 
@@ -30,7 +30,7 @@ class DisposisiController extends Controller
     {
         return view('admin.disposisi.create', [
             'surat_masuks' => SuratMasuk::all(),
-            'user' => User::all()
+            'users' => User::all()
         ]);
     }
 
