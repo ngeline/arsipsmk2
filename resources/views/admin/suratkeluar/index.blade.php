@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => "Surat Keluar"]);
+@extends('layouts.app', ['title' => "Surat Keluar"])
 
 @section('content')
 
@@ -56,7 +56,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                            
+
                         </div>
                     </div>
                 </div>

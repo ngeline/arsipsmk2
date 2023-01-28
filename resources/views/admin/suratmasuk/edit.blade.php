@@ -1,4 +1,4 @@
-@extends ('layouts.app', ['title' => 'Edit Surat Masuk']);
+@extends ('layouts.app', ['title' => 'Edit Surat Masuk'])
 
 @section('content')
     <div class="body flex-grow-1 px-3">
