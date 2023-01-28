@@ -66,24 +66,25 @@
                 <div class="col-lg-8">
                     <div class="card-group d-block d-md-flex row">
                         <div class="card col-md-7 p-4 mb-0">
-                            <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                            <form class="login100-form validate-form" method="POST" action="{{ route('authenticate') }}">
+                                @csrf
                                 <div class="card-body">
                                     <h1>Login</h1>
                                     <p class="text-medium-emphasis">Sign In to your account</p>
 
                                     <div class="input-group mb-3"><span class="input-group-text">
                                             <svg class="icon">
-                                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                                                <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
                                             </svg></span>
-                                        <input class="form-control" type="text" placeholder="Username">
+                                        <input class="form-control" type="email" placeholder="email" name="email">
                                     </div>
 
                                     <div class="input-group mb-4"><span class="input-group-text">
                                             <svg class="icon">
-                                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked">
+                                                <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked">
                                                 </use>
                                             </svg></span>
-                                        <input class="form-control" type="password" placeholder="Password">
+                                        <input class="form-control" type="password" placeholder="Password" name="password">
                                     </div>
 
                                     <div class="row">
@@ -102,8 +103,8 @@
                                         <div>
                                             <h2>Sign up</h2>
                                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
-                                            <button class="btn btn-lg btn-outline-light mt-3" href="" type="button">Register
-                                                Now!</button>
+                                            <a class="btn btn-lg btn-outline-light mt-3" href="{{ route('register') }}" type="button">Register
+                                                Now!</a>
                                         </div>
                                     </div>
                                 </div>

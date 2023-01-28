@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,15 +15,19 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
-            'password' => 'requried'
+            'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            if (auth()->user()->getNameRole() == "Admin") {
+                return redirect()->intended(route('admin.dashboard'));
+            } else {
+                return redirect()->intended(route('siswa.dashboard'));
+            }
         }
 
         return back()->withErrors([
