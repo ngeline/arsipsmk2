@@ -21,6 +21,19 @@ class DashboardController extends Controller
 
         $jmlsftsrt = SifatSurat::count();
 
-        return view('admin.dashboard.index', compact('jmlsrtmsk','jmlsrtklr','jmlsftsrt' ,'jmldspss'));
+        return view('dashboard.index', compact('jmlsrtmsk','jmlsrtklr','jmlsftsrt' ,'jmldspss'));
+    }
+
+    public function indexsiswa()
+    {
+        $jmlsrtmsk = SuratMasuk::count();
+
+        $jmlsrtklr = SuratKeluar::count();
+
+        $jmldspss = Disposisi::count();
+
+        $jmlsftsrt = SifatSurat::count();
+
+        return view('dashboard.index', compact('jmlsrtmsk','jmlsrtklr','jmlsftsrt' ,'jmldspss'));
     }
 }

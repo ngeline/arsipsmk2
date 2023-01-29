@@ -65,32 +65,71 @@
               <div class="card-body p-4">
                 <h1>Register</h1>
                 <p class="text-medium-emphasis">Create your account</p>
-                <div class="input-group mb-3"><span class="input-group-text">
-                    <svg class="icon">
-                      <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                  <form method="GET" action="{{ route('register') }}">
+                        @csrf
 
-                    </svg></span>
-                  <input class="form-control" type="text" placeholder="Username" name="username">
-                </div>
-                <div class="input-group mb-3"><span class="input-group-text">
-                    <svg class="icon">
-                      <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-                    </svg></span>
-                  <input class="form-control" type="text" placeholder="Email" name="email">
-                </div>
-                <div class="input-group mb-3"><span class="input-group-text">
-                    <svg class="icon">
-                      <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                    </svg></span>
-                  <input class="form-control" type="password" placeholder="Password" name="password">
-                </div>
-                <div class="input-group mb-4"><span class="input-group-text">
-                    <svg class="icon">
-                      <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                    </svg></span>
-                  <input class="form-control" type="password" placeholder="Repeat password" name="confirm-password">
-                </div>
-                <button class="btn btn-block btn-success" type="button">Create Account</button>
+                      <div class="input-group mb-3"><span class="input-group-text">
+                          <svg class="icon">
+                            <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                          </svg></span>
+                          <input id="name" type="text"
+                                class="form-control form-control-xl @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nama">
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                      </div>
+                      <div class="input-group mb-3"><span class="input-group-text">
+                          <svg class="icon">
+                            <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                          </svg></span>
+                          <input id="email" type="email"
+                                class="form-control form-control-xl @error('email') is-invalid @enderror"
+                                placeholder="Email" name="email" value="{{ old('email') }}" required
+                                autocomplete="email">
+                            <div class="form-control-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                      </div>
+                      <div class="input-group mb-3"><span class="input-group-text">
+                          <svg class="icon">
+                            <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                          </svg></span>
+                          <input id="password" type="password"
+                                class="form-control form-control-xl @error('password') is-invalid @enderror"
+                                name="password" required autocomplete="new-password" placeholder="Password">
+                            <div class="form-control-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                      </div>
+                      <div class="input-group mb-4"><span class="input-group-text">
+                          <svg class="icon">
+                            <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                          </svg></span>
+                          <input id="password-confirm" type="password" class="form-control form-control-xl"
+                                name="password_confirmation" required autocomplete="new-password"
+                                placeholder="Confirm Password">
+                                <div class="form-control-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                      </div>
+                    <button class="btn btn-block btn-success" type="submit"{{ __('Register') }}>Create Account</button>
+                </form>
               </div>
             </div>
           </div>

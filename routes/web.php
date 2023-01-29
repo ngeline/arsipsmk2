@@ -31,6 +31,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 
     Route::get('/register', [LoginController::class, 'register'])->name('register');
+    // Route::post('/register', [LoginController::class, 'postregister'])->name('post.login');
 });
 
 Route::middleware('auth')->group(function () {
@@ -69,6 +70,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/dashboard', function () {
             return redirect()->route('siswa.dashboard');
         });
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('siswa.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'indexsiswa'])->name('siswa.dashboard');
     });
 });
