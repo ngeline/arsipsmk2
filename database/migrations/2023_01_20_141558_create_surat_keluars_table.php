@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->date('tanggal_input');
             $table->string('kode_simpan');
             $table->text('keterangan');
+            $table->foreignIdFor(User::class)->nullable();
             $table->timestamps();
         });
     }

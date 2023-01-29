@@ -15,8 +15,17 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
+        $role = auth()->user()->getNameRole();
+        $getIdUser = auth()->user()->id;
+
+        if ($role == 'Admin') {
+            $surat_masuks = SuratMasuk::all();
+        } else {
+            $surat_masuks = SuratMasuk::where('user_id', $getIdUser)->get();
+        }
+
         return view('admin.suratmasuk.index', [
-            'surat_masuks' => SuratMasuk::all()
+            'surat_masuks' => $surat_masuks
         ]);
     }
 

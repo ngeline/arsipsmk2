@@ -53,7 +53,7 @@ class DisposisiController extends Controller
             'catatan' => 'required',
             'user_id' => 'required'
         ]);
-        // 
+        //
 
         Disposisi::create($input);
 
@@ -94,9 +94,10 @@ class DisposisiController extends Controller
      */
     public function update(Request $request, Disposisi $disposisi)
     {
+        // dd($request->all());
         $input = $request->validate([
             'surat_masuk_id' => 'required',
-            'sifat_surat' => 'required',
+            'sifat_surat_id' => 'required',
             'catatan' => 'required',
             'user_id' => 'required'
         ]);

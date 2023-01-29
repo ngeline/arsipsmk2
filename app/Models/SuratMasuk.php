@@ -21,12 +21,18 @@ class SuratMasuk extends Model
         'tanggal_input',
         'kode_simpan',
         'keterangan',
+        'user_id'
     ];
 
     protected $guard = [];
 
     public function disposisi()
     {
-        return $this->hasOne(Disposisi::class, 'surat_masuk_id', 'id');
+        return $this->belongsTo(Disposisi::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

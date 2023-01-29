@@ -61,4 +61,14 @@ class User extends Authenticatable
 
         return $role->nama;
     }
+
+    public function sueratKeluar()
+    {
+        return $this->belongsTo(SuratKeluar::class);
+    }
+
+    public function suratMasuk()
+    {
+        return $this->belongsTo(SuratMasuk::class);
+    }
 }

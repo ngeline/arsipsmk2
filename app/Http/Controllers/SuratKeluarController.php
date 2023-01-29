@@ -15,8 +15,17 @@ class SuratKeluarController extends Controller
      */
     public function index()
     {
+        $role = auth()->user()->getNameRole();
+        $getIdUser = auth()->user()->id;
+
+        if ($role == 'Admin') {
+            $surat_keluars = SuratKeluar::all();
+        } else {
+            $surat_keluars = SuratKeluar::where('user_id', $getIdUser)->get();
+        }
+
         return view('admin.suratkeluar.index', [
-            'surat_keluars' => SuratKeluar::all()
+            'surat_keluars' => $surat_keluars
         ]);
     }
 

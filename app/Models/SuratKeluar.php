@@ -21,6 +21,7 @@ class SuratKeluar extends Model
         'tanggal_input',
         'kode_simpan',
         'keterangan',
+        'user_id'
     ];
 
     protected $guard = [];
@@ -28,5 +29,10 @@ class SuratKeluar extends Model
     public function disposisi()
     {
         return $this->belongsTo(Disposisi::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
