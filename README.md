@@ -18,6 +18,14 @@
 - php artisan migrate --seed
 - php artisan serve
 
+## Login
+
+- email: admin@admin.com
+- password: admin
+
+- email: siswa@siswa.com
+- password: siswa
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
