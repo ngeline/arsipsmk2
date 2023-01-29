@@ -1,6 +1,7 @@
 @extends('layouts.app', ['title' => 'Surat Masuk'])
 
 @section('content')
+@include('flash-message')
     <div class="body flex-grow-1 px-3">
         <div class="container-lg">
             <div class="car"></div>

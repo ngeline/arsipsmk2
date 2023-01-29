@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => "User"])
 
 @section('content')
-
+@include('flash-message')
 
 
     <div class="body flex-grow-1 px-3">
