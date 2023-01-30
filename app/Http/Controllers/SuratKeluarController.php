@@ -24,7 +24,7 @@ class SuratKeluarController extends Controller
             $surat_keluars = SuratKeluar::where('user_id', $getIdUser)->get();
         }
 
-        return view('admin.suratkeluar.index', [
+        return view(strtolower($role).'.suratkeluar.index', [
             'surat_keluars' => $surat_keluars
         ]);
     }
@@ -36,7 +36,9 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        return view('admin.suratkeluar.create');
+        $role = auth()->user()->getNameRole();
+
+        return view(strtolower($role).'.suratkeluar.create');
     }
 
     /**
@@ -64,6 +66,11 @@ class SuratKeluarController extends Controller
         Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
 
         $input['dokumen'] = $nameFile;
+
+        if (auth()->user()->getNameRole() == 'Siswa') {
+            $input['user_id'] = auth()->user()->id;
+        }
+
         SuratKeluar::create($input);
 
         return redirect()->back()->with('success', 'Berhasil membuat surat keluar baru');
@@ -88,7 +95,9 @@ class SuratKeluarController extends Controller
      */
     public function edit(SuratKeluar $suratKeluar)
     {
-        return view('admin.suratkeluar.edit', [
+        $role = auth()->user()->getNameRole();
+
+        return view(strtolower($role).'.suratkeluar.edit', [
             'surat_keluar' => $suratKeluar
         ]);
     }
@@ -122,6 +131,10 @@ class SuratKeluarController extends Controller
             Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
 
             $input['dokumen'] = $nameFile;
+        }
+
+        if (auth()->user()->getNameRole() == 'Siswa') {
+            $input['user_id'] = auth()->user()->id;
         }
 
         $suratKeluar->update($input);

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\DisposisiController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -30,8 +30,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 
-    Route::get('/register', [LoginController::class, 'register'])->name('register');
-    // Route::post('/register', [LoginController::class, 'postregister'])->name('post.login');
+    Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    Route::post('/register', [RegisterController::class, 'postregister'])->name('postregister');
 });
 
 Route::middleware('auth')->group(function () {
@@ -42,8 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('checkrole:Admin')->prefix('/admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-        // Profil Admim
-        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        // Profil Admin
+        Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
 
         // Surat Masuk Admin
         Route::resource('/surat-masuk', SuratMasukController::class)->except(['update', 'destroy']);
@@ -55,21 +55,34 @@ Route::middleware('auth')->group(function () {
         Route::put('/surat-keluar/{surat_keluar}', [SuratKeluarController::class, 'update'])->name('surat-keluar.update');
         Route::get('/surat-keluar/{surat_keluar}/delete', [SuratKeluarController::class, 'destroy'])->name('surat-keluar.destroy');
 
-        // Disposisi Admim
-        Route::resource('/disposisi', DisposisiController::class);
+        // Disposisi Admin
+        Route::resource('/disposisi', DisposisiController::class)->except(['destroy']);
+        Route::get('/surat-masuk/{surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
 
         // Sifat Surat
-        Route::resource('/sifat-surat', SifatSuratController::class);
-
-        // Sifat Surat
-        Route::resource('/users', UserController::class);
+        Route::resource('/users', UserController::class)->except(['destroy']);
+        Route::get('/users/{user}/delete', [UserController::class, 'destroy'])->name('users.destroy');
     });
 
     // routing siswa
-    Route::prefix('siswa')->group(function () {
-        Route::get('/admin/dashboard', function () {
-            return redirect()->route('siswa.dashboard');
-        });
-        Route::get('/dashboard', [DashboardController::class, 'indexsiswa'])->name('siswa.dashboard');
+    Route::prefix('siswa')->name('siswa.')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'indexsiswa'])->name('dashboard');
+
+        // Profil Siswa
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+        // Surat Masuk Siswa
+        Route::resource('/surat-masuk', SuratMasukController::class)->except(['update', 'destroy']);
+        Route::put('/surat-masuk/{surat_masuk}', [SuratMasukController::class, 'update'])->name('surat-masuk.update');
+        Route::get('/surat-masuk/{surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
+
+        // Surat Keluar Siswa
+        Route::resource('/surat-keluar', SuratKeluarController::class)->except(['update', 'destroy']);
+        Route::put('/surat-keluar/{surat_keluar}', [SuratKeluarController::class, 'update'])->name('surat-keluar.update');
+        Route::get('/surat-keluar/{surat_keluar}/delete', [SuratKeluarController::class, 'destroy'])->name('surat-keluar.destroy');
+
+        // Disposisi Siswa
+        Route::resource('/disposisi', DisposisiController::class)->except(['destroy']);
+        Route::get('/surat-masuk/{surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
     });
 });

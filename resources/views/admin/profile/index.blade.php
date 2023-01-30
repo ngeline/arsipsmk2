@@ -1,8 +1,8 @@
 @extends ('layouts.app', ['title' => 'Profile'])
 
 @section('content')
-@include('flash-message')
-    <div class="body flex-grow-1 px-3">
+<div class="body flex-grow-1 px-3">
+        @include('flash-message')
         <div class="container-lg">
             <div class="row">
                 <div class="col-12">

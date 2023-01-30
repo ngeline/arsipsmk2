@@ -17,8 +17,17 @@ class DisposisiController extends Controller
      */
     public function index()
     {
-        return view('admin.disposisi.index', [
-            'disposisis' => Disposisi::with('user', 'suratMasuk')->get(),
+        $role = auth()->user()->getNameRole();
+        $getIdUser = auth()->user()->id;
+
+        if ($role == 'Admin') {
+            $disposisis = Disposisi::with('user', 'suratMasuk')->get();
+        } else {
+            $disposisis = Disposisi::with('user', 'suratMasuk')->where('user_id', $getIdUser)->get();
+        }
+
+        return view(strtolower($role).'.disposisi.index', [
+            'disposisis' => $disposisis,
             'surat_masuks' => SuratMasuk::all(),
             'sifat_surats' => SifatSurat::all(),
             'users' => User::all()
@@ -32,10 +41,7 @@ class DisposisiController extends Controller
      */
     public function create()
     {
-        return view('admin.disposisi.create', [
-            'surat_masuks' => SuratMasuk::all(),
-            'users' => User::all()
-        ]);
+
     }
 
     /**
@@ -46,14 +52,12 @@ class DisposisiController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $input = $request->validate([
             'surat_masuk_id' => 'required',
             'sifat_surat_id' => 'required',
             'catatan' => 'required',
             'user_id' => 'required'
         ]);
-        //
 
         Disposisi::create($input);
 

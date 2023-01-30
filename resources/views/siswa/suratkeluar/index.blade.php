@@ -11,7 +11,7 @@
                 <div class="example">
                     <div class="tab-content rounded-bottom">
                         <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                        <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data</a>
+                        <a href="{{ route('siswa.surat-keluar.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data</a>
 
 
                                 <table id="tabel-data" class="table table-striped table-hover">
@@ -47,9 +47,9 @@
                                                 <td>{{ $surat_keluar->kode_simpan }}</td>
                                                 <td>{{ $surat_keluar->keterangan }}</td>
                                                 <td>
-                                                    <a href="{{ route('surat-keluar.edit', $surat_keluar->id) }}"
+                                                    <a href="{{ route('siswa.surat-keluar.edit', $surat_keluar->id) }}"
                                                         class="btn btn-warning" role="button">Edit</a>
-                                                    <a href="{{ route('surat-keluar.destroy', $surat_keluar->id) }}"
+                                                    <a href="{{ route('siswa.surat-keluar.destroy', $surat_keluar->id) }}"
                                                         class="btn btn-danger" role="button">Delete</a>
                                                 </td>
                                             </tr>

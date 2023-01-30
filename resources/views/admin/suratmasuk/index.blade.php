@@ -1,8 +1,8 @@
 @extends('layouts.app', ['title' => 'Surat Masuk'])
 
 @section('content')
-@include('flash-message')
     <div class="body flex-grow-1 px-3">
+        @include('flash-message')
         <div class="container-lg">
             <div class="car"></div>
             <div class="card mb-4">
@@ -11,7 +11,8 @@
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                                <a href="{{ route('surat-masuk.create') }}" class="btn btn-primary btn-l mb-4" role="button">Tambah Data</a>
+                                <a href="{{ route('surat-masuk.create') }}" class="btn btn-primary btn-l mb-4"
+                                    role="button">Tambah Data</a>
 
 
                                 <table id="tabel-data" class="table table-striped table-hover">

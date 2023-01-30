@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Disposisi</h5>
             </div>
-            <form method="POST" action="{{ route('disposisi.update', $disposisi->id) }}">
+            <form method="POST" action="{{ route('siswa.disposisi.update', $disposisi->id) }}">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
@@ -82,10 +82,12 @@
                             <select class="form-control" name="user_id" id="user_id">
                                 <option value=""> Pilih Nama User </option>
                                 @foreach ($users as $user)
-                                    @if ($disposisi->user_id == $user->id)
-                                        <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
-                                    @else
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @if (auth()->user()->name != $user->name)
+                                        @if ($disposisi->user_id == $user->id)
+                                            <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                                        @else
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endif
                                     @endif
                                 @endforeach
                             </select>

@@ -72,6 +72,7 @@
                                     <h1>Login</h1>
                                     <p class="text-medium-emphasis">Sign In to your account</p>
 
+                                    @include('flash-message')
                                     <div class="input-group mb-3"><span class="input-group-text">
                                             <svg class="icon">
                                                 <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user"></use>

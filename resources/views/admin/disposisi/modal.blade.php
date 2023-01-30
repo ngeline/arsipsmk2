@@ -1,4 +1,5 @@
-<div class="modal fade" id="modal-edit{{ $disposisi->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-edit{{ $disposisi->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,10 +83,12 @@
                             <select class="form-control" name="user_id" id="user_id">
                                 <option value=""> Pilih Nama User </option>
                                 @foreach ($users as $user)
-                                    @if ($disposisi->user_id == $user->id)
-                                        <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
-                                    @else
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @if (auth()->user()->name != $user->name)
+                                        @if ($disposisi->user_id == $user->id)
+                                            <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                                        @else
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endif
                                     @endif
                                 @endforeach
                             </select>

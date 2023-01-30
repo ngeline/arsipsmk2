@@ -1,17 +1,18 @@
-@extends('layouts.app', ['title' => "Surat Keluar"])
+@extends('layouts.app', ['title' => 'Surat Keluar'])
 
 @section('content')
-@include('flash-message')
     <div class="body flex-grow-1 px-3">
-    <div class="container-lg">
-        <div class="car"></div>
-        <div class="card mb-4">
-            <div class="card-header"><strong>Surat Masuk</strong><span class="small ms-1"></span></div>
-            <div class="card-body">
-                <div class="example">
-                    <div class="tab-content rounded-bottom">
-                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                        <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data</a>
+        @include('flash-message')
+        <div class="container-lg">
+            <div class="car"></div>
+            <div class="card mb-4">
+                <div class="card-header"><strong>Surat Masuk</strong><span class="small ms-1"></span></div>
+                <div class="card-body">
+                    <div class="example">
+                        <div class="tab-content rounded-bottom">
+                            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
+                                <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary btn-l"
+                                    role="button">Tambah Data</a>
 
 
                                 <table id="tabel-data" class="table table-striped table-hover">
@@ -57,13 +58,13 @@
                                     </tbody>
                                 </table>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 @push('js')
     <script>

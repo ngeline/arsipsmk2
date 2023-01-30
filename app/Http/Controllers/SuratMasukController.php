@@ -24,7 +24,7 @@ class SuratMasukController extends Controller
             $surat_masuks = SuratMasuk::where('user_id', $getIdUser)->get();
         }
 
-        return view('admin.suratmasuk.index', [
+        return view(strtolower($role).'.suratmasuk.index', [
             'surat_masuks' => $surat_masuks
         ]);
     }
@@ -36,7 +36,9 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        return view('admin.suratmasuk.create');
+        $role = auth()->user()->getNameRole();
+
+        return view(strtolower($role).'.suratmasuk.create');
     }
 
     /**
@@ -64,6 +66,11 @@ class SuratMasukController extends Controller
         Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
 
         $input['dokumen'] = $nameFile;
+
+        if (auth()->user()->getNameRole() == 'Siswa') {
+            $input['user_id'] = auth()->user()->id;
+        }
+
         SuratMasuk::create($input);
 
         return redirect()->back()->with('success', 'Berhasil membuat surat masuk baru');
@@ -88,7 +95,9 @@ class SuratMasukController extends Controller
      */
     public function edit(SuratMasuk $suratMasuk)
     {
-        return view('admin.suratmasuk.edit', [
+        $role = auth()->user()->getNameRole();
+
+        return view(strtolower($role).'.suratmasuk.edit', [
             'surat_masuk' => $suratMasuk
         ]);
     }
@@ -124,6 +133,10 @@ class SuratMasukController extends Controller
             $input['dokumen'] = $nameFile;
         }
 
+        if (auth()->user()->getNameRole() == 'Siswa') {
+            $input['user_id'] = auth()->user()->id;
+        }
+
         $suratMasuk->update($input);
 
         return redirect()->back()->with('success', 'Berhasil memperbarui surat masuk');
@@ -136,143 +149,6 @@ class SuratMasukController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(SuratMasuk $suratMasuk)
-    {
-        $suratMasuk->delete();
-
-        return redirect()->back()->with('success', 'Berhasil menghapus surat masuk');
-    }
-
-
-
-
-    // UNTUK SISWA CONTROLLER
-
-
-
-
-    public function siswaindex()
-    {
-        $role = auth()->user()->getNameRole();
-        $getIdUser = auth()->user()->id;
-
-        if ($role == 'Siswa') {
-            $surat_masuks = SuratMasuk::all();
-        } else {
-            $surat_masuks = SuratMasuk::where('user_id', $getIdUser)->get();
-        }
-
-        return view('siswa.suratmasuk.index', [
-            'surat_masuks' => $surat_masuks
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function siswacreate()
-    {
-        return view('admin.suratmasuk.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function siswastore(Request $request)
-    {
-        $input = $request->validate([
-            'dari' => 'required',
-            'alamat' => 'required',
-            'nomor_surat' => 'required',
-            'tanggal_surat' => 'required',
-            'dokumen' => 'required|mimes:pdf,doc',
-            'perihal_surat' => 'required',
-            'tanggal_input' => 'required',
-            'kode_simpan' => 'required',
-            'keterangan' => 'required',
-        ]);
-
-        $getDokumen = $request->file('dokumen');
-        $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
-        Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
-
-        $input['dokumen'] = $nameFile;
-        SuratMasuk::create($input);
-
-        return redirect()->back()->with('success', 'Berhasil membuat surat masuk baru');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function siswashow(SuratMasuk $suratMasuk)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function siswaedit(SuratMasuk $suratMasuk)
-    {
-        return view('admin.suratmasuk.edit', [
-            'surat_masuk' => $suratMasuk
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function siswaupdate(Request $request, SuratMasuk $suratMasuk)
-    {
-        $input = $request->validate([
-            'dari' => 'required',
-            'alamat' => 'required',
-            'nomor_surat' => 'required',
-            'tanggal_surat' => 'required',
-            'perihal_surat' => 'required',
-            'tanggal_input' => 'required',
-            'kode_simpan' => 'required',
-            'keterangan' => 'required',
-        ]);
-
-        if ($request->hasFile('dokumen')) {
-            $request->validate([
-                'dokumen' => 'mimes:pdf,doc'
-            ]);
-            $getDokumen = $request->file('dokumen');
-            $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
-            Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
-
-            $input['dokumen'] = $nameFile;
-        }
-
-        $suratMasuk->update($input);
-
-        return redirect()->back()->with('success', 'Berhasil memperbarui surat masuk');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function siswadestroy(SuratMasuk $suratMasuk)
     {
         $suratMasuk->delete();
 

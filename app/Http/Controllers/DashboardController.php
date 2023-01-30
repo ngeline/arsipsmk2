@@ -26,11 +26,13 @@ class DashboardController extends Controller
 
     public function indexsiswa()
     {
-        $jmlsrtmsk = SuratMasuk::count();
+        $getIdUser = auth()->user()->id;
 
-        $jmlsrtklr = SuratKeluar::count();
+        $jmlsrtmsk = SuratMasuk::where('user_id', $getIdUser)->count();
 
-        $jmldspss = Disposisi::count();
+        $jmlsrtklr = SuratKeluar::where('user_id', $getIdUser)->count();
+
+        $jmldspss = Disposisi::where('user_id', $getIdUser)->count();
 
         $jmlsftsrt = SifatSurat::count();
 

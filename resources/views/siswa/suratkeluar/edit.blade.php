@@ -12,7 +12,7 @@
                             <div class="example">
                                 <div class="tab-content rounded-bottom">
                                     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-267">
-                                        <form class="row g-3" action="{{ route('surat-keluar.update', $surat_keluar->id) }}"
+                                        <form class="row g-3" action="{{ route('siswa.surat-keluar.update', $surat_keluar->id) }}"
                                             enctype="multipart/form-data" method="POST">
                                             @csrf
                                             @method('PUT')

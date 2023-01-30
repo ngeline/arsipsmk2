@@ -1,8 +1,8 @@
 @extends('layouts.app', ['title' => 'Disposisi'])
 
 @section('content')
-@include('flash-message')
-    <div class="body flex-grow-1 px-3">
+<div class="body flex-grow-1 px-3">
+        @include('flash-message')
         <div class="container-lg">
             <div class="car"></div>
             <div class="card mb-4">
@@ -133,7 +133,9 @@
                                 <select class="form-control" name="user_id" id="user_id">
                                     <option value=""> Pilih Nama User </option>
                                     @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @if (auth()->user()->name != $user->name)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
 

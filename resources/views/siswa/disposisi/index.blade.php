@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'Disposisi'])
 
 @section('content')
-@include('flash-message')
+    @include('flash-message')
     <div class="body flex-grow-1 px-3">
         <div class="container-lg">
             <div class="car"></div>
@@ -38,11 +38,12 @@
                                                 <td>{{ $disposisi->user->name }}</td>
                                                 <td>{{ $disposisi->catatan }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" onclick="editModal({{ $disposisi->id }})">
+                                                    <button type="button" class="btn btn-warning"
+                                                        onclick="editModal({{ $disposisi->id }})">
                                                         Edit
                                                     </button>
-                                                    @include('admin.disposisi.modal')
-                                                    <a href="{{ route('disposisi.destroy', $disposisi->id) }}"
+                                                    @include('siswa.disposisi.modal')
+                                                    <a href="{{ route('siswa.disposisi.destroy', $disposisi->id) }}"
                                                         class="btn btn-danger" role="button">Delete</a>
                                                 </td>
                                             </tr>
@@ -65,7 +66,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Disposisi</h5>
                 </div>
-                <form method="POST" action="{{ route('disposisi.store') }}">
+                <form method="POST" action="{{ route('siswa.disposisi.store') }}">
 
                     @csrf
                     <div class="modal-body">
@@ -133,7 +134,9 @@
                                 <select class="form-control" name="user_id" id="user_id">
                                     <option value=""> Pilih Nama User </option>
                                     @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @if (auth()->user()->name != $user->name)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
 
@@ -179,8 +182,8 @@
             // });
         });
 
-        function editModal(id){
-            $('#modal-edit'+id).modal('toggle');
+        function editModal(id) {
+            $('#modal-edit' + id).modal('toggle');
         }
     </script>
 @endpush

@@ -1,8 +1,8 @@
 @extends ('layouts.app', ['title' => "Tambah Surat Masuk"])
 
 @section('content')
-@include('flash-message')
     <div class="body flex-grow-1 px-3">
+        @include('flash-message')
         <div class="container-lg">
             <div class="row">
                 <div class="col-12">
@@ -16,7 +16,8 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="col-12">
-                                                <label class="form-label" for="dari">Dari <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="dari">Dari <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('dari') is-invalid @enderror"
                                                     id="dari" name="dari" type="text"
                                                     placeholder="Masukkan Nama Pengirim" value="{{ old('dari') }}">
@@ -25,7 +26,8 @@
                                                 @enderror
                                             </div>
                                             <div class="col-12">
-                                                <label class="form-label" for="alamat">Alamat <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="alamat">Alamat <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('alamat') is-invalid @enderror"
                                                     id="alamat" name="alamat" type="text"
                                                     placeholder="Masukkan Keterangan Alamat" value="{{ old('alamat') }}">
@@ -34,7 +36,8 @@
                                                 @enderror
                                             </div>
                                             <div class="col-12">
-                                                <label class="form-label" for="nomor-surat">Nomor Surat <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="nomor-surat">Nomor Surat <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('nomor_surat') is-invalid @enderror"
                                                     id="nomor-surat" name="nomor_surat" type="text"
                                                     placeholder="Masukkan Nomor Surat" value="{{ old('nomor_surat') }}">
@@ -43,15 +46,18 @@
                                                 @enderror
                                             </div>
                                             <div class="col-4">
-                                                <label class="form-label" for="tanggal-surat">Tanggal Surat <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="tanggal-surat">Tanggal Surat <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('tanggal_surat') is-invalid @enderror"
-                                                    id="tanggal-surat" name="tanggal_surat" type="date" value="{{ old('tanggal_surat') }}">
+                                                    id="tanggal-surat" name="tanggal_surat" type="date"
+                                                    value="{{ old('tanggal_surat') }}">
                                                 @error('tanggal_surat')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-8">
-                                                <label for="dokumen" class="form-label">Upload Dokumen <span class="text-danger">*</span></label>
+                                                <label for="dokumen" class="form-label">Upload Dokumen <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('dokumen') is-invalid @enderror"
                                                     type="file" id="dokumen" name="dokumen" accept=".pdf,.doc">
                                                 @error('dokumen')
@@ -59,24 +65,29 @@
                                                 @enderror
                                             </div>
                                             <div class="col-12">
-                                                <label class="form-label" for="perihal-surat">Perihal Surat <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="perihal-surat">Perihal Surat <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('perihal_surat') is-invalid @enderror"
                                                     id="perihal-surat" name="perihal_surat" type="text"
-                                                    placeholder="Masukkan Perihal Surat" value="{{ old('perihal_surat') }}">
+                                                    placeholder="Masukkan Perihal Surat"
+                                                    value="{{ old('perihal_surat') }}">
                                                 @error('perihal_surat')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-5">
-                                                <label class="form-label" for="tanggal-masuk">Tanggal Masuk <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="tanggal-masuk">Tanggal Masuk <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('tanggal_input') is-invalid @enderror"
-                                                    id="tanggal-masuk" name="tanggal_input" type="date" value="{{ old('tanggal_input') }}">
+                                                    id="tanggal-masuk" name="tanggal_input" type="date"
+                                                    value="{{ old('tanggal_input') }}">
                                                 @error('tanggal_input')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-7">
-                                                <label class="form-label" for="kode-simpan">Kode Simpan <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="kode-simpan">Kode Simpan <span
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control @error('kode_simpan') is-invalid @enderror"
                                                     id="kode-simpan" name="kode_simpan" type="text"
                                                     placeholder="Masukkan Kode Simpan" value="{{ old('kode_simpan') }}">
@@ -86,8 +97,9 @@
                                             </div>
                                             <div class="form-floating">
                                                 <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Leave a comment here"
-                                                id="keterangan" name="keterangan" style="height: 100px">{{ old('keterangan') }}</textarea>
-                                                <label for="keterangan">Masukkan Keterangan Surat <span class="text-danger">*</span></label>
+                                                    id="keterangan" name="keterangan" style="height: 100px">{{ old('keterangan') }}</textarea>
+                                                <label for="keterangan">Masukkan Keterangan Surat <span
+                                                        class="text-danger">*</span></label>
                                                 @error('keterangan')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
