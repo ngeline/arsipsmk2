@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
 
         // Disposisi Admin
         Route::resource('/disposisi', DisposisiController::class)->except(['destroy']);
-        Route::get('/surat-masuk/{surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
+        Route::get('/disposisi/{disposisi}/delete', [DisposisiController::class, 'destroy'])->name('disposisi.destroy');
 
         // Sifat Surat
         Route::resource('/users', UserController::class)->except(['destroy']);
@@ -83,6 +83,6 @@ Route::middleware('auth')->group(function () {
 
         // Disposisi Siswa
         Route::resource('/disposisi', DisposisiController::class)->except(['destroy']);
-        Route::get('/surat-masuk/{surat_masuk}/delete', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
+        Route::get('/disposisi/{disposisi}/delete', [DisposisiController::class, 'destroy'])->name('disposisi.destroy');
     });
 });
