@@ -1,8 +1,8 @@
 @extends('layouts.app', ['title' => 'Disposisi'])
 
 @section('content')
-    @include('flash-message')
     <div class="body flex-grow-1 px-3">
+        @include('flash-message')
         <div class="container-lg">
             <div class="car"></div>
             <div class="card mb-4">
