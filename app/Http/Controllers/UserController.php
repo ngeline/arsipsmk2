@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,8 @@ class UserController extends Controller
     public function index()
     {
         return view('admin.users.index', [
-            'users' => User::with('role')->get()
+            'users' => User::with('role')->get(),
+            'roles' => Role::all()
         ]);
     }
 
@@ -94,7 +96,7 @@ class UserController extends Controller
         if (!$password) {
             $input['password'] = Hash::make($password);
         }
-        User::create($input);
+        $user->update($input);
 
         return redirect()->back()->with('success', 'Berhasil menambah user baru');
     }

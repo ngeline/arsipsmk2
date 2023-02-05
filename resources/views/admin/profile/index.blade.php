@@ -44,7 +44,7 @@
                                             </div>
 
                                             <div class="form-group row mb-3">
-                                                <p><b class="text-danger fs-5">! </b>Jika tidak ingin mengganti password, input password dan confirm password dikosongkan.</p>
+                                                <p><b class="text-danger fs-5">! </b>Jika tidak ingin mengganti password, input password dan konfirmasi password dikosongkan.</p>
                                                 <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                                 <div class="col-md-6">
@@ -59,7 +59,7 @@
                                             </div>
 
                                             <div class="form-group row mb-3">
-                                                <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                                <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Korfirmasi Password') }}</label>
 
                                                 <div class="col-md-6">
                                                     <input style="background-color: #ecebeb; color: black;" id="password-confirm" type="password" class="form-control" name="password_confirmation">
