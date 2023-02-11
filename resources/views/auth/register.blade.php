@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>CoreUI Free Bootstrap Admin Template</title>
+    <title>Arsip SMK 2 | Register</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('core-ui') }}/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('core-ui') }}/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('core-ui') }}/favicon/apple-icon-72x72.png">
@@ -67,7 +67,7 @@
                     <div class="card mb-4 mx-4">
                         <div class="card-body p-4">
                             <h1>Register</h1>
-                            <p class="text-medium-emphasis">Create your account</p>
+                            <p class="text-medium-emphasis">Buat Akun Anda</p>
 
                             @include('flash-message')
                             <form method="POST" action="{{ route('register') }}">
@@ -142,8 +142,7 @@
                                         <i class="bi bi-shield-lock"></i>
                                     </div>
                                 </div>
-                                <button class="btn btn-block btn-success" type="submit"{{ __('Register') }}>Create
-                                    Account</button>
+                                <button class="btn btn-block btn-success" type="submit"{{ __('Register') }}>Buat Akun</button>
                             </form>
                         </div>
                     </div>
