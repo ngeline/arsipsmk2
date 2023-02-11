@@ -102,12 +102,9 @@
                         </div>
                     </div>
 
-
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="buttoncloseexampleModal" class="btn btn-secondary"
-                        data-dismiss="modal">Kembali</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="editModal({{ $disposisi->id }})">Kembali</button>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </form>

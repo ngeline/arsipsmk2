@@ -11,8 +11,6 @@
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                                <!-- <a href="{{ route('disposisi.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data</a> -->
-                                <!-- Button trigger modal -->
                                 <button type="button" id="buttonexampleModal" class="btn btn-primary" data-toggle="modal"
                                     data-target="#exampleModal">
                                     Tambah Data
@@ -24,6 +22,7 @@
                                             <th scope="col">Nomor Surat</th>
                                             <th scope="col">Nama</th>
                                             <th scope="col">Catatan</th>
+                                            <th scope="col">Dokumen</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -38,11 +37,18 @@
                                                 <td>{{ $disposisi->user->name }}</td>
                                                 <td>{{ $disposisi->catatan }}</td>
                                                 <td>
+                                                    @include('siswa.disposisi.modaldokumen')
+                                                    <button type="button" class="btn btn-primary"
+                                                        onclick="dokumenModal({{ $disposisi->id }})">
+                                                        Tampilkan
+                                                    </button>
+                                                </td>
+                                                <td>
                                                     <button type="button" class="btn btn-warning"
                                                         onclick="editModal({{ $disposisi->id }})">
                                                         Edit
                                                     </button>
-                                                    @include('siswa.disposisi.modal')
+                                                    @include('siswa.disposisi.modaledit')
                                                     <a href="{{ route('siswa.disposisi.destroy', $disposisi->id) }}"
                                                         class="btn btn-danger" role="button">Delete</a>
                                                 </td>
@@ -176,14 +182,14 @@
             $('#buttoncloseexampleModal').click(function() {
                 $('#exampleModal').modal('hide')
             });
-
-            // $('.btn-edit').click(function() {
-            //     console.log($(this));
-            // });
         });
 
         function editModal(id) {
             $('#modal-edit' + id).modal('toggle');
+        }
+
+        function dokumenModal(id) {
+            $('#modal-dokumen' + id).modal('toggle');
         }
     </script>
 @endpush

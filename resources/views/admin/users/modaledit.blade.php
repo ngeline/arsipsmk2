@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
             </div>
-            <form method="POST" action="{{ route('user.update', $user->id) }}">
+            <form method="POST" action="{{ route('users.update', $user->id) }}">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
@@ -16,16 +16,16 @@
                             <input id="name" type="text"
                                 class="form-control @error('name') is-invalid @enderror" name="name"
                                 value="{{ $user->name }}" required autofocus placeholder="Nama">
-                            @error('name')
+                            {{-- @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
                         </div>
                     </div>
                     <div class="form-group row mb-3">
                         <label for="sifat_surat_id"
-                            class="col-md-3 col-form-label text-md-right">{{ __('Sifat Surat') }}</label>
+                            class="col-md-3 col-form-label text-md-right">{{ __('Role') }}</label>
 
                         <div class="col-md-8">
                             <select class="form-control" name="role_id" id="role_id" required>
@@ -33,8 +33,9 @@
                                 @foreach ($roles as $role)
                                     @if ($user->role_id == $role->id)
                                         <option value="{{ $user->role_id }}" selected>{{ $role->nama }}</option>
+                                    @else
+                                        <option value="{{ $role->id }}">{{ $role->nama }}</option>
                                     @endif
-                                    <option value="{{ $role->id }}">{{ $role->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -46,11 +47,11 @@
                             <input id="email" type="email"
                                 class="form-control @error('email') is-invalid @enderror" placeholder="Email"
                                 name="email" value="{{ $user->email }}" required>
-                            @error('email')
+                            {{-- @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
                         </div>
                     </div>
                     <div class="form-group row mb-3">
@@ -59,13 +60,13 @@
 
                         <div class="col-md-8">
                             <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
+                                class="form-control @error('password') is-invalid @enderror" name="password"
                                 placeholder="Password">
-                            @error('password')
+                            {{-- @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
                         </div>
                     </div>
                     <div class="form-group row mb-4">
@@ -73,13 +74,12 @@
                             Password</label>
                         <div class="col-md-8">
                             <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" required placeholder="Confirm Password">
+                                name="password_confirmation" placeholder="Confirm Password">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="buttoncloseexampleModal" class="btn btn-secondary"
-                        data-dismiss="modal">Kembali</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="editModal({{ $user->id }})">Kembali</button>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </form>

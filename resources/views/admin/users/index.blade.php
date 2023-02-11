@@ -11,9 +11,10 @@
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-l" role="button">Tambah
-                                    Data</a>
-
+                                <button type="button" id="buttonexampleModal" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Tambah Data
+                                </button>
 
                                 <table id="tabel-data" class="table table-striped table-hover">
                                     <thead>
@@ -34,10 +35,12 @@
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->role->nama }}</td>
                                                 <td>
-                                                    <a href=""class="btn btn-warning text-white"
-                                                        role="button">Edit</a>
-                                                    <a href=""class="btn btn-danger text-white"
-                                                        role="button">Delete</a>
+                                                    <button type="button" class="btn btn-warning" onclick="editModal({{ $user->id }})">
+                                                        Edit
+                                                    </button>
+                                                    @include('admin.users.modaledit')
+                                                    <a href="{{ route('users.destroy', $user->id) }}"
+                                                        class="btn btn-danger" role="button">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -59,7 +62,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Disposisi</h5>
                 </div>
-                <form method="POST" action="{{ route('user.store') }}">
+                <form method="POST" action="{{ route('users.store') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group row mb-3">
@@ -78,7 +81,7 @@
                         </div>
                         <div class="form-group row mb-3">
                             <label for="sifat_surat_id"
-                                class="col-md-3 col-form-label text-md-right">{{ __('Sifat Surat') }}</label>
+                                class="col-md-3 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-8">
                                 <select class="form-control" name="role_id" id="role_id" required>
@@ -127,7 +130,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="buttoncloseexampleModal" class="btn btn-secondary"
+                        <button type="button" id="btn-close-tambah" class="btn btn-secondary"
                             data-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
@@ -142,6 +145,22 @@
             $('#tabel-data').DataTable({
                 responsive: true
             });
+
+            $('#buttonexampleModal').click(function() {
+                $('#exampleModal').modal('toggle')
+            });
+
+            $('#btn-close-tambah').click(function() {
+                $('#exampleModal').modal('hide');
+            });
+
+            // $('.btn-edit').click(function() {
+            //     console.log($(this));
+            // });
         });
+
+        function editModal(id){
+            $('#modal-edit'+id).modal('toggle');
+        }
     </script>
 @endpush

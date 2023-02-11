@@ -44,7 +44,7 @@ class UserController extends Controller
             'role_id' => 'required',
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed'
+            'password' => 'required|min:8|confirmed'
         ]);
 
         $input['password'] = Hash::make($request->input('password'));
@@ -93,7 +93,8 @@ class UserController extends Controller
         ]);
 
         $password = $request->input('password');
-        if (!$password) {
+        if (!is_null($password)) {
+            $request->validate(['password' => 'min:8|confirmed']);
             $input['password'] = Hash::make($password);
         }
         $user->update($input);

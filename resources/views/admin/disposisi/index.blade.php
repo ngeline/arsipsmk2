@@ -11,8 +11,6 @@
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                                <!-- <a href="{{ route('disposisi.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data</a> -->
-                                <!-- Button trigger modal -->
                                 <button type="button" id="buttonexampleModal" class="btn btn-primary" data-toggle="modal"
                                     data-target="#exampleModal">
                                     Tambah Data
@@ -41,7 +39,7 @@
                                                     <button type="button" class="btn btn-warning" onclick="editModal({{ $disposisi->id }})">
                                                         Edit
                                                     </button>
-                                                    @include('admin.disposisi.modal')
+                                                    @include('admin.disposisi.modaledit')
                                                     <a href="{{ route('disposisi.destroy', $disposisi->id) }}"
                                                         class="btn btn-danger" role="button">Delete</a>
                                                 </td>
@@ -148,11 +146,9 @@
                             </div>
                         </div>
 
-
-
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="buttoncloseexampleModal" class="btn btn-secondary"
+                        <button type="button" id="btn-close-tambah" class="btn btn-secondary"
                             data-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
@@ -172,8 +168,8 @@
                 $('#exampleModal').modal('toggle')
             });
 
-            $('#buttoncloseexampleModal').click(function() {
-                $('#exampleModal').modal('hide')
+            $('#btn-close-tambah').click(function() {
+                $('#exampleModal').modal('hide');
             });
 
             // $('.btn-edit').click(function() {
