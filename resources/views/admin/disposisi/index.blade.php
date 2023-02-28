@@ -20,7 +20,8 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nomor Surat</th>
-                                            <th scope="col">Nama</th>
+                                            <th scope="col">Dari</th>
+                                            <th scope="col">Kepada</th>
                                             <th scope="col">Catatan</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
@@ -34,6 +35,7 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $disposisi->suratMasuk->nomor_surat }}</td>
                                                 <td>{{ $disposisi->user->name }}</td>
+                                                <td>{{ $disposisi->kepada }}</td>
                                                 <td>{{ $disposisi->catatan }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning" onclick="editModal({{ $disposisi->id }})">
@@ -128,11 +130,11 @@
                             <label for="user_id" class="col-md-3 col-form-label text-md-right">{{ __('User') }}</label>
 
                             <div class="col-md-8">
-                                <select class="form-control" name="user_id" id="user_id">
+                                <select class="form-control" name="kepada" id="kepada">
                                     <option value=""> Pilih Nama User </option>
                                     @foreach ($users as $user)
                                         @if (auth()->user()->name != $user->name)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            <option value="{{ $user->name }}">{{ $user->name }}</option>
                                         @endif
                                     @endforeach
                                 </select>

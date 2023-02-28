@@ -19,9 +19,9 @@ class SuratMasukController extends Controller
         $getIdUser = auth()->user()->id;
 
         if ($role == 'Admin') {
-            $surat_masuks = SuratMasuk::all();
+            $surat_masuks = SuratMasuk::orderBy('updated_at', 'desc')->get();
         } else {
-            $surat_masuks = SuratMasuk::where('user_id', $getIdUser)->get();
+            $surat_masuks = SuratMasuk::where('user_id', $getIdUser)->orderBy('updated_at', 'desc')->get();
         }
 
         return view(strtolower($role).'.suratmasuk.index', [

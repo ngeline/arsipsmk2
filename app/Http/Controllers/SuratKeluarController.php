@@ -19,9 +19,9 @@ class SuratKeluarController extends Controller
         $getIdUser = auth()->user()->id;
 
         if ($role == 'Admin') {
-            $surat_keluars = SuratKeluar::all();
+            $surat_keluars = SuratKeluar::orderBy('updated_at', 'desc')->get();
         } else {
-            $surat_keluars = SuratKeluar::where('user_id', $getIdUser)->get();
+            $surat_keluars = SuratKeluar::where('user_id', $getIdUser)->orderBy('updated_at', 'desc')->get();
         }
 
         return view(strtolower($role).'.suratkeluar.index', [

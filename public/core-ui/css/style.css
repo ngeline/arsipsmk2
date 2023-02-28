@@ -8335,7 +8335,7 @@ html:not([dir=rtl]) .sidebar-close {
   align-items: center;
   justify-content: center;
   color: var(--cui-sidebar-brand-color);
-  background: var(--cui-sidebar-brand-bg);
+  /* background: var(--cui-sidebar-brand-bg); */
 }
 .sidebar-brand .sidebar-brand-narrow {
   display: none;

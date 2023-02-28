@@ -2,8 +2,7 @@
     <div class="sidebar-brand d-none d-md-flex">
         <!-- ARSIP SURAT -->
         <div class="sidebar-brand d-none d-md-flex">
-            <img class="" width="150" height="46" src="{{ asset('core-ui') }}/assets/brand/logosmk2.png"
-                alt="user@email.com"></img>
+            <img class="" width="150" height="46" src="{{ asset('core-ui') }}/assets/brand/logosmk2.png">
         </div>
     </div>
 

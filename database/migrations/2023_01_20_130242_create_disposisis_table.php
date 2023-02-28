@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(SifatSurat::class);
             $table->string('catatan');
             $table->foreignIdFor(User::class);
+            $table->string('kepada');
             $table->timestamps();
         });
     }

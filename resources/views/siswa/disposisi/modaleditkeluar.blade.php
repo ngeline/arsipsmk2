@@ -1,4 +1,5 @@
-<div class="modal fade" id="modal-edit{{ $disposisi->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-edit{{ $disposisi->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -77,16 +78,15 @@
 
                     <div class="form-group row mb-3">
                         <label for="user_id" class="col-md-3 col-form-label text-md-right">{{ __('User') }}</label>
-
                         <div class="col-md-8">
-                            <select class="form-control" name="user_id" id="user_id">
+                            <select class="form-control" name="kepada" id="kepada">
                                 <option value=""> Pilih Nama User </option>
                                 @foreach ($users as $user)
                                     @if (auth()->user()->name != $user->name)
                                         @if ($disposisi->user_id == $user->id)
-                                            <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                                            <option value="{{ $user->name }}" selected>{{ $user->name }}</option>
                                         @else
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            <option value="{{ $user->name }}">{{ $user->name }}</option>
                                         @endif
                                     @endif
                                 @endforeach
@@ -105,8 +105,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="buttoncloseexampleModal" class="btn btn-secondary"
-                        data-dismiss="modal">Kembali</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="editModal({{ $disposisi->id }})">Kembali</button>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </form>

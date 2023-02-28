@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Disposisi;
+use App\Models\DisposisiKeluar;
 use App\Models\SuratMasuk;
 use App\Models\SifatSurat;
 use App\Models\User;
@@ -20,18 +21,23 @@ class DisposisiController extends Controller
         $role = auth()->user()->getNameRole();
         $getIdUser = auth()->user()->id;
 
-        if ($role == 'Admin') {
-            $disposisis = Disposisi::with('user', 'suratMasuk')->get();
-        } else {
-            $disposisis = Disposisi::with('user', 'suratMasuk')->where('user_id', $getIdUser)->get();
-        }
-
-        return view(strtolower($role).'.disposisi.index', [
-            'disposisis' => $disposisis,
+        $data = [
             'surat_masuks' => SuratMasuk::all(),
             'sifat_surats' => SifatSurat::all(),
             'users' => User::all()
-        ]);
+        ];
+
+        if ($role == 'Admin') {
+            $disposisis = Disposisi::with('user', 'suratMasuk', 'sifatSurat')->get();
+            $data['disposisis'] = $disposisis;
+        } else {
+            $disposisiMasuks = Disposisi::with('suratMasuk', 'sifatSurat', 'user')->where('kepada', auth()->user()->name)->orderBy('updated_at', 'desc')->get();
+            $disposisiKeluars = Disposisi::with('suratMasuk', 'sifatSurat', 'user')->where('user_id', $getIdUser)->orderBy('updated_at', 'desc')->get();
+            $data['disposisiMasuks'] = $disposisiMasuks;
+            $data['disposisiKeluars'] = $disposisiKeluars;
+        }
+
+        return view(strtolower($role).'.disposisi.index', $data);
     }
 
     /**
@@ -56,9 +62,10 @@ class DisposisiController extends Controller
             'surat_masuk_id' => 'required',
             'sifat_surat_id' => 'required',
             'catatan' => 'required',
-            'user_id' => 'required'
+            'kepada' => 'required'
         ]);
 
+        $input['user_id'] = auth()->user()->id;
         Disposisi::create($input);
 
         return redirect()->back()->with('success', 'Berhasil menambah disposisi baru');
@@ -98,13 +105,14 @@ class DisposisiController extends Controller
      */
     public function update(Request $request, Disposisi $disposisi)
     {
-        // dd($request->all());
         $input = $request->validate([
             'surat_masuk_id' => 'required',
             'sifat_surat_id' => 'required',
             'catatan' => 'required',
-            'user_id' => 'required'
+            'kepada' => 'required'
         ]);
+
+        // $input['user_id'] = auth()->user()->name;
 
         $disposisi->update($input);
 

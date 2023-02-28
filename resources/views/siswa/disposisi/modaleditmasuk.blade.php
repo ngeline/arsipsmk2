@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Disposisi</h5>
             </div>
-            <form method="POST" action="{{ route('disposisi.update', $disposisi->id) }}">
+            <form method="POST" action="{{ route('siswa.disposisi.update', $disposisi->id) }}">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
@@ -76,35 +76,32 @@
                         </div>
                     </div>
 
-                    {{-- {{ dd($disposisi->kepada.auth()->user()->name) }} --}}
-                    @if ($disposisi->kepada !== auth()->user()->name)
-                        <div class="form-group row mb-3">
-                            <label for="user_id"
-                                class="col-md-3 col-form-label text-md-right">{{ __('User') }}</label>
-
-                            <div class="col-md-8">
-                                <select class="form-control" name="kepada" id="kepada">
-                                    <option value=""> Pilih Nama User </option>
-                                    @foreach ($users as $user)
-                                        @if (auth()->user()->name != $user->name)
-                                            @if ($disposisi->kepada == $user->name)
-                                                <option value="{{ $user->name }}" selected>{{ $user->name }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $user->name }}">{{ $user->name }}</option>
-                                            @endif
+                    {{-- <div class="form-group row mb-3">
+                        <label for="user_id" class="col-md-3 col-form-label text-md-right">{{ __('User') }}</label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="kepada" id="kepada">
+                                <option value=""> Pilih Nama User </option>
+                                @foreach ($users as $user)
+                                    @if (auth()->user()->name != $user->name)
+                                        @if ($disposisi->user_id == $user->id)
+                                            <option value="{{ $user->name }}" selected>{{ $user->name }}</option>
+                                        @else
+                                            <option value="{{ $user->name }}">{{ $user->name }}</option>
                                         @endif
-                                    @endforeach
-                                </select>
+                                    @endif
+                                @endforeach
+                            </select>
 
-                                @error('user_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+                            @error('user_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    @endif
+                    </div> --}}
+
+
 
                 </div>
                 <div class="modal-footer">

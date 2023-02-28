@@ -11,5 +11,8 @@ class SifatSurat extends Model
 
     protected $table = 'sifat_surats';
 
-
+    public function disposisi()
+    {
+        return $this->belongsTo(Disposisi::class);
+    }
 }
