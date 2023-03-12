@@ -64,48 +64,50 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="card-group d-block d-md-flex row">
+                    <div class="card-group d-block d-md-flex row m-3">
                         <div class="card col-md-7 p-4 mb-0">
                             <form class="login100-form validate-form" method="POST" action="{{ route('authenticate') }}">
                                 @csrf
                                 <div class="card-body">
                                     <h1>Login</h1>
-                                    <p class="text-medium-emphasis">Sign In to your account</p>
+                                    <p class="text-medium-emphasis">Login dengan akun kamu</p>
 
                                     @include('flash-message')
-                                    <div class="input-group mb-3"><span class="input-group-text">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
                                             <svg class="icon">
                                                 <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                                            </svg></span>
+                                            </svg>
+                                        </span>
                                         <input class="form-control" type="email" placeholder="email" name="email">
                                     </div>
 
-                                    <div class="input-group mb-4"><span class="input-group-text">
+                                    <div class="input-group mb-4">
+                                        <span class="input-group-text">
                                             <svg class="icon">
                                                 <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked">
                                                 </use>
-                                            </svg></span>
-                                        <input class="form-control" type="password" placeholder="Password" name="password">
+                                            </svg>
+                                        </span>
+                                        <input class="form-control" type="password" placeholder="Password" name="password" id="cb-show-password">
+                                        <span class="input-group-text">
+                                            <input type="checkbox" onclick="togglePassword()">
+                                        </span>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-6">
                                             <button class="btn btn-primary px-4" type="submit">Login</button>
                                         </div>
-
-                                        <div class="col-6 text-end">
-                                            <button class="btn btn-link px-0" type="button">Forgot password?</button>
-                                        </div>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="card col-md-5 text-white bg-primary py-5">
-                                    <div class="card-body text-center">
+                                    <div class="card-body text-center mt-4">
                                         <div>
                                             <h2>Sign up</h2>
                                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
-                                            <a class="btn btn-lg btn-outline-light mt-3" href="{{ route('register') }}" type="button">Register
-                                                Now!</a>
+                                            <a class="btn btn-lg btn-outline-light mt-3" href="{{ route('register') }}" type="button">Buat akun sekarang!</a>
                                         </div>
                                     </div>
                                 </div>
@@ -119,6 +121,15 @@
     <script src="{{ asset('core-ui') }}/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/simplebar/js/simplebar.min.js"></script>
     <script>
+        function togglePassword() {
+            let x = document.getElementById('cb-show-password');
+
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
     </script>
 
 </body>

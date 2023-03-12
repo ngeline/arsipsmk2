@@ -7,10 +7,10 @@
             </svg>
         </button>
         <a class="header-brand d-md-none" href="#">
-            <img class="" width="100" height="40" src="{{ asset('core-ui') }}/assets/brand/logobelsiporen.png">
+            <img class="" width="90" height="40" src="{{ asset('core-ui') }}/assets/brand/logosmk2.png">
         </a>
         <ul class="header-nav ms-3">
-            <p class="mt-2">Halo, <b>{{ auth()->user()->name }}</b></p>
+            <p class="mt-2">Selamat Datang, <b>{{ auth()->user()->name }}</b></p>
             <li class="nav-item dropdown">
                 <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button"
                     aria-haspopup="true" aria-expanded="false">
@@ -21,6 +21,11 @@
                     <div class="dropdown-header bg-light py-2">
                         <div class="fw-semibold">Setting</div>
                     </div>
+                    <a class="dropdown-item" href="#">
+                        <svg class="icon me-2">
+                            <use xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                        </svg> Profile
+                    </a>
                     <a class="dropdown-item" href="{{ route('logout') }}">
                         <svg class="icon me-2">
                             <use

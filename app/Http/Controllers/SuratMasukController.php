@@ -62,8 +62,8 @@ class SuratMasukController extends Controller
         ]);
 
         $getDokumen = $request->file('dokumen');
-        $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
-        Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
+        $nameFile = str_replace(['/', ' '], '-', $getDokumen->getClientOriginalName());
+        $getDokumen->move(public_path('upload/dokumens'), $nameFile);
 
         $input['dokumen'] = $nameFile;
 
@@ -128,7 +128,7 @@ class SuratMasukController extends Controller
             ]);
             $getDokumen = $request->file('dokumen');
             $nameFile = str_replace('/', '-', $getDokumen->getClientOriginalName());
-            Storage::putFileAs('public/dokumen', $getDokumen, $nameFile);
+            $getDokumen->move(public_path('upload/dokumens'), $nameFile);
 
             $input['dokumen'] = $nameFile;
         }

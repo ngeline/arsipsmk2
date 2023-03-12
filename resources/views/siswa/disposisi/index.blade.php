@@ -11,10 +11,6 @@
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                                {{-- <button type="button" id="buttonexampleModal" class="btn btn-primary mb-3"
-                                    data-toggle="modal" data-target="#exampleModal">
-                                    Tambah Data
-                                </button> --}}
                                 <table id="tabel-data-masuk" class="table table-striped table-hover">
                                     <thead>
                                         <tr>
@@ -24,7 +20,6 @@
                                             <th scope="col">Sifat Surat</th>
                                             <th scope="col">Catatan</th>
                                             <th scope="col">Dokumen</th>
-                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,15 +39,6 @@
                                                         onclick="dokumenModal({{ $disposisi->id }})">
                                                         Tampilkan
                                                     </button>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning"
-                                                        onclick="editModal({{ $disposisi->id }})">
-                                                        Edit
-                                                    </button>
-                                                    @include('siswa.disposisi.modaleditmasuk')
-                                                    <a href="{{ route('siswa.disposisi.destroy', $disposisi->id) }}"
-                                                        class="btn btn-danger" role="button">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -105,13 +91,15 @@
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning"
-                                                        onclick="editModal({{ $disposisi->id }})">
-                                                        Edit
-                                                    </button>
-                                                    @include('siswa.disposisi.modaleditkeluar')
-                                                    <a href="{{ route('siswa.disposisi.destroy', $disposisi->id) }}"
-                                                        class="btn btn-danger" role="button">Delete</a>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <button type="button" class="btn btn-warning"
+                                                            onclick="editModal({{ $disposisi->id }})">
+                                                            Edit
+                                                        </button>
+                                                        @include('siswa.disposisi.modaleditkeluar')
+                                                        <a href="{{ route('siswa.disposisi.destroy', $disposisi->id) }}"
+                                                            class="btn btn-danger" role="button">Delete</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

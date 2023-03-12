@@ -48,10 +48,13 @@
                                                 <td>{{ $surat_keluar->kode_simpan }}</td>
                                                 <td>{{ $surat_keluar->keterangan }}</td>
                                                 <td>
-                                                    <a href="{{ route('surat-keluar.edit', $surat_keluar->id) }}"
-                                                        class="btn btn-warning" role="button">Edit</a>
-                                                    <a href="{{ route('surat-keluar.destroy', $surat_keluar->id) }}"
-                                                        class="btn btn-danger" role="button">Delete</a>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ asset('upload/dokumens/'. $surat_keluar->dokumen) }}" class="btn btn-primary" download>Download</a>
+                                                        <a href="{{ route('surat-keluar.edit', $surat_keluar->id) }}"
+                                                            class="btn btn-warning" role="button">Edit</a>
+                                                        <a href="{{ route('surat-keluar.destroy', $surat_keluar->id) }}"
+                                                            class="btn btn-danger" role="button">Delete</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

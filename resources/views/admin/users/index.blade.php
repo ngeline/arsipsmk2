@@ -35,12 +35,14 @@
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->role->nama }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" onclick="editModal({{ $user->id }})">
-                                                        Edit
-                                                    </button>
-                                                    @include('admin.users.modaledit')
-                                                    <a href="{{ route('users.destroy', $user->id) }}"
-                                                        class="btn btn-danger" role="button">Delete</a>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <button type="button" class="btn btn-warning" onclick="editModal({{ $user->id }})">
+                                                            Edit
+                                                        </button>
+                                                        @include('admin.users.modaledit')
+                                                        <a href="{{ route('users.destroy', $user->id) }}"
+                                                            class="btn btn-danger" role="button">Delete</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

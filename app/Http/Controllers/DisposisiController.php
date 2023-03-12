@@ -7,6 +7,7 @@ use App\Models\DisposisiKeluar;
 use App\Models\SuratMasuk;
 use App\Models\SifatSurat;
 use App\Models\User;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 
 class DisposisiController extends Controller
@@ -37,7 +38,7 @@ class DisposisiController extends Controller
             $data['disposisiKeluars'] = $disposisiKeluars;
         }
 
-        return view(strtolower($role).'.disposisi.index', $data);
+        return view(strtolower($role) . '.disposisi.index', $data);
     }
 
     /**
@@ -109,10 +110,7 @@ class DisposisiController extends Controller
             'surat_masuk_id' => 'required',
             'sifat_surat_id' => 'required',
             'catatan' => 'required',
-            'kepada' => 'required'
         ]);
-
-        // $input['user_id'] = auth()->user()->name;
 
         $disposisi->update($input);
 
@@ -131,4 +129,6 @@ class DisposisiController extends Controller
 
         return redirect()->back()->with('success', 'Berhasil menghapus disposisi');
     }
+
+    
 }

@@ -9,7 +9,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Mediabelsip | {{ $title }}</title>
+    <title>Arsip SMK 2 | {{ $title }}</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('core-ui') }}/assets/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('core-ui') }}/assets/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('core-ui') }}/assets/favicon/apple-icon-72x72.png">
@@ -40,6 +40,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
     <link href="{{ asset('core-ui') }}/css/examples.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('core-ui') }}/plugins/datatable/datatables.min.css">
+    {{-- selectize --}}
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+        integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
@@ -77,7 +82,8 @@
 
     {{-- Jquery --}}
     <script src="{{ asset('core-ui') }}/plugins/jquery/jquery-3.1.0.js"></script>
-    <script type="text/javascript" charset="utf8" src="{{ asset('core-ui') }}/plugins/datatable/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('core-ui') }}/plugins/datatable/datatables.min.js">
+    </script>
     <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('core-ui') }}/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/simplebar/js/simplebar.min.js"></script>
@@ -86,6 +92,10 @@
     <script src="{{ asset('core-ui') }}/vendors/@coreui/chartjs/js/coreui-chartjs.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/@coreui/utils/js/coreui-utils.js"></script>
     <script src="{{ asset('core-ui') }}/js/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+        integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @stack('js')
 
 </body>

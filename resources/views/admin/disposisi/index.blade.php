@@ -38,12 +38,14 @@
                                                 <td>{{ $disposisi->kepada }}</td>
                                                 <td>{{ $disposisi->catatan }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" onclick="editModal({{ $disposisi->id }})">
-                                                        Edit
-                                                    </button>
-                                                    @include('admin.disposisi.modaledit')
-                                                    <a href="{{ route('disposisi.destroy', $disposisi->id) }}"
-                                                        class="btn btn-danger" role="button">Delete</a>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <button type="button" class="btn btn-warning" onclick="editModal({{ $disposisi->id }})">
+                                                            Edit
+                                                        </button>
+                                                        @include('admin.disposisi.modaledit')
+                                                        <a href="{{ route('disposisi.destroy', $disposisi->id) }}"
+                                                            class="btn btn-danger" role="button">Delete</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

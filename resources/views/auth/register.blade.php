@@ -111,38 +111,47 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="input-group mb-3"><span class="input-group-text">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
                                         <svg class="icon">
                                             <use
                                                 xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked">
                                             </use>
-                                        </svg></span>
-                                    <input id="password" type="password"
+                                        </svg>
+                                    </span>
+                                    <input type="password"
                                         class="form-control form-control-xl @error('password') is-invalid @enderror"
-                                        name="password" required autocomplete="new-password" placeholder="Password">
-                                    <div class="form-control-icon">
-                                        <i class="bi bi-shield-lock"></i>
-                                    </div>
+                                        name="password" required autocomplete="new-password" placeholder="Password"
+                                        id="cb-show-password">
+                                    <span class="input-group-text">
+                                        <input type="checkbox" onclick="togglePassword('cb-show-password')">
+                                    </span>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="input-group mb-4"><span class="input-group-text">
+                                <div class="input-group mb-4">
+                                    <span class="input-group-text">
                                         <svg class="icon">
                                             <use
                                                 xlink:href="{{ asset('core-ui') }}/vendors/@coreui/icons/svg/free.svg#cil-lock-locked">
                                             </use>
-                                        </svg></span>
+                                        </svg>
+                                    </span>
                                     <input id="password-confirm" type="password" class="form-control form-control-xl"
                                         name="password_confirmation" required autocomplete="new-password"
                                         placeholder="Confirm Password">
+                                    <span class="input-group-text">
+                                        <input type="checkbox" onclick="togglePassword('password-confirm')">
+                                    </span>
                                     <div class="form-control-icon">
                                         <i class="bi bi-shield-lock"></i>
                                     </div>
                                 </div>
-                                <button class="btn btn-block btn-success" type="submit"{{ __('Register') }}>Buat Akun</button>
+                                <button class="btn btn-block btn-success" type="submit"{{ __('Register') }}>Buat
+                                    Akun</button>
                             </form>
                         </div>
                     </div>
@@ -153,7 +162,17 @@
     <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('core-ui') }}/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/simplebar/js/simplebar.min.js"></script>
-    <script></script>
+    <script>
+        function togglePassword(id) {
+            let x = document.getElementById(id);
+
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 
 </body>
 

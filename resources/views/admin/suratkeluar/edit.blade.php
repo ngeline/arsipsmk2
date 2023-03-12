@@ -69,7 +69,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <iframe
-                                                    src="{{ url(Storage::url('public/dokumen/' . $surat_keluar->dokumen)) }}"
+                                                src="{{ asset('upload/dokumens/'. $surat_keluar->dokumen) }}"
                                                     frameborder="0" height="250px"></iframe>
                                             </div>
                                             <div class="col-12">
