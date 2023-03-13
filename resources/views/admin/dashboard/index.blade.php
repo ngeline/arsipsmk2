@@ -81,11 +81,11 @@
         </div>
 
         <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Apa itu Arsip Surat?</h4>
-            <p>Aplikasi arsip surat masuk keluar adalah sebuah aplikasi yang digunakan untuk mengelola surat masuk dan surat keluar sesuai alur yang ditetapkan.</p>
-            <p class="mb-0">Manfaat adanya aplikasi arsip surat dapat mengurangi terjadinya kesulitan serta waktu yang dihabiskan untuk proses pencarian data-data surat, dan memperbaiki manajemen dari pengarsipan surat yang sudah ada.</p>
+            <h4 class="alert-heading">Apa itu Media Belsip?</h4>
+            <p>Aplikasi Mediabelsip masuk keluar adalah sebuah aplikasi yang digunakan untuk mengelola surat masuk dan surat keluar sesuai alur yang ditetapkan.</p>
+            <p class="mb-0">Manfaat adanya aplikasi Mediabelsip dapat mengurangi terjadinya kesulitan serta waktu yang dihabiskan untuk proses pencarian data-data surat, dan memperbaiki manajemen dari pengarsipan surat yang sudah ada.</p>
             <hr>
-            <p class="mb-0">Fitur Aplikasi Arsip Surat</p>
+            <p class="mb-0">Fitur Aplikasi Mediabelsip</p>
             <p class="card-text light-300 text-dark text-start p-3">
                 ✅ Kelola Surat Masuk <br>
                 ✅ Kelola Surat Keluar <br>
