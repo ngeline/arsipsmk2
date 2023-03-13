@@ -10,7 +10,8 @@
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
-                                <form action="{{ route('cetakpdf') }}" method="post">
+                                {{-- form cetak --}}
+                                <form action="{{ route('cetakpdf', 'SuratMasuk') }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
@@ -26,10 +27,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <button type="submit" class="btn btn-info text-white btn-lg btn-block mt-4">Cetak</button>
+                                            <button type="submit" class="btn btn-info text-white mt-4">Cetak</button>
                                         </div>
                                     </div>
                                 </form>
+                                {{-- end form cetak --}}
                                 <hr>
                                 <a href="{{ route('siswa.surat-masuk.create') }}" class="btn btn-primary btn-l my-2 role="button">Tambah Data</a>
                                 <hr>

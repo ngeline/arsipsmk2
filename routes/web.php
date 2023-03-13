@@ -38,7 +38,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('/update-profil/{user}', [ProfileController::class, 'update'])->name('profil.update');
-    Route::post('/createPdf', [CetakController::class, 'createPdf'])->name('cetakpdf');
+    Route::post('/createPdf/{model}', [CetakController::class, 'createPdf'])->name('cetakpdf');
 
     // routing admin
     Route::middleware('checkrole:Admin')->prefix('/admin')->group(function () {

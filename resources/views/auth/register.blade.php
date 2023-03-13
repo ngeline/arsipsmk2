@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Arsip SMK 2 | Register</title>
+    <title>Mediabelsip | Register</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('core-ui') }}/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('core-ui') }}/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('core-ui') }}/favicon/apple-icon-72x72.png">
@@ -119,20 +119,19 @@
                                             </use>
                                         </svg>
                                     </span>
-                                    <input type="password"
+                                    <input id="password" type="password"
                                         class="form-control form-control-xl @error('password') is-invalid @enderror"
-                                        name="password" required autocomplete="new-password" placeholder="Password"
-                                        id="cb-show-password">
-                                    <span class="input-group-text">
-                                        <input type="checkbox" onclick="togglePassword('cb-show-password')">
-                                    </span>
+                                        name="password" required autocomplete="new-password" placeholder="Password">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-shield-lock"></i>
+                                    </div>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="input-group mb-4">
+                                <div class="input-group">
                                     <span class="input-group-text">
                                         <svg class="icon">
                                             <use
@@ -142,16 +141,17 @@
                                     </span>
                                     <input id="password-confirm" type="password" class="form-control form-control-xl"
                                         name="password_confirmation" required autocomplete="new-password"
-                                        placeholder="Confirm Password">
-                                    <span class="input-group-text">
-                                        <input type="checkbox" onclick="togglePassword('password-confirm')">
-                                    </span>
+                                        placeholder="Ulangi Password">
                                     <div class="form-control-icon">
                                         <i class="bi bi-shield-lock"></i>
                                     </div>
                                 </div>
-                                <button class="btn btn-block btn-success" type="submit"{{ __('Register') }}>Buat
-                                    Akun</button>
+
+                                <div class="d-flex justify-content-end">
+                                    <input type="checkbox" onclick="togglePassword()"> <span>&nbsp;Tampilkan password</span>
+                                </div>
+
+                                <button class="btn btn-block btn-success mt-4" type="submit"{{ __('Register') }}>Buat Akun</button>
                             </form>
                         </div>
                     </div>
@@ -163,13 +163,16 @@
     <script src="{{ asset('core-ui') }}/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="{{ asset('core-ui') }}/vendors/simplebar/js/simplebar.min.js"></script>
     <script>
-        function togglePassword(id) {
-            let x = document.getElementById(id);
+        function togglePassword() {
+            let password = document.getElementById('password');
+            let passwordConfirm = document.getElementById('password-confirm');
 
-            if (x.type === "password") {
-                x.type = "text";
+            if (password.type === 'password' && passwordConfirm.type === 'password') {
+                password.type = 'text';
+                passwordConfirm.type = 'text';
             } else {
-                x.type = "password";
+                password.type = 'password';
+                passwordConfirm.type = 'password';
             }
         }
     </script>

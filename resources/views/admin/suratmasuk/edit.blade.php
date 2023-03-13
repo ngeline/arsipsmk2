@@ -83,7 +83,7 @@
                                                 @enderror
                                             </div>
                                             <div class="col-5">
-                                                <label class="form-label" for="tanggal-masuk">Tanggal Masuk <span
+                                                <label class="form-label" for="tanggal-masuk">Tanggal Input <span
                                                         class="text-danger">*</span></label>
                                                 <input class="form-control @error('tanggal_input') is-invalid @enderror"
                                                     id="tanggal-masuk" name="tanggal_input" type="date"
