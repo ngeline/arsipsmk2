@@ -11,9 +11,32 @@
                     <div class="example">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-416">
+                                {{-- form cetak --}}
+                                <form action="{{ route('cetakpdf', 'SuratKeluar') }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="tanggalAwal">Tanggal Awal</label>
+                                                <input type="date" class="form-control" id="tanggalAwal" name="tanggalAwal">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="tanggalAkhir">Tanggal Akhir</label>
+                                                <input type="date" class="form-control" id="tanggalAkhir" name="tanggalAkhir">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="submit" class="btn btn-info text-white mt-4">Cetak</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                {{-- end form cetak --}}
+                                <hr>
                                 <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary btn-l"
                                     role="button">Tambah Data</a>
-
+                                <hr>
 
                                 <table id="tabel-data" class="table table-striped table-hover">
                                     <thead>
