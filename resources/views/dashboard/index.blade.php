@@ -251,7 +251,6 @@
 
         <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading">Cara Menggunakan Surat Masuk :</h4>
-            <br>
             <!-- <p class="mb-0">Fitur Aplikasi Mediabelsip (Siswa)</p> -->
             <p class="card-text light-300 text-dark text-start p-3">
                 Pilih Menu Surat Masuk <br>
@@ -265,7 +264,6 @@
 
         <div class="alert alert-warning" role="alert">
             <h4 class="alert-heading">Cara Menggunakan Surat Keluar :</h4>
-            <br>
             <!-- <p class="mb-0">Fitur Aplikasi Mediabelsip (Siswa)</p> -->
             <p class="card-text light-300 text-dark text-start p-3">
                 Pilih Menu Surat Keluar <br>
@@ -279,7 +277,6 @@
 
         <div class="alert alert-primary" role="alert">
             <h4 class="alert-heading">Cara Menggunakan Disposisi :</h4>
-            <br>
             <!-- <p class="mb-0">Fitur Aplikasi Mediabelsip (Siswa)</p> -->
             <p class="card-text light-300 text-dark text-start p-3">
                 Pilih Menu Disposisi <br>
