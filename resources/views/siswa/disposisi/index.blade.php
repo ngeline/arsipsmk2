@@ -6,7 +6,7 @@
         <div class="container-lg">
             <div class="car"></div>
             <div class="card mb-4">
-                <div class="card-header"><strong>Disposisi Surat Masuk</strong><span class="small ms-1"></span></div>
+                <div class="card-header"><strong>Disposisi Masuk</strong><span class="small ms-1"></span></div>
                 <div class="card-body">
                     <div class="example">
                         <div class="tab-content rounded-bottom">
@@ -51,7 +51,7 @@
             </div>
 
             <div class="card mb-4">
-                <div class="card-header"><strong>Disposisi Surat Keluar</strong><span class="small ms-1"></span></div>
+                <div class="card-header"><strong>Disposisi Keluar</strong><span class="small ms-1"></span></div>
                 <div class="card-body">
                     <div class="example">
                         <div class="tab-content rounded-bottom">
